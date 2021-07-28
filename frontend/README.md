@@ -4,49 +4,7 @@
 
 - Bootstrap 5, [Font Awesome 5](https://www.w3schools.com/icons/fontawesome5_intro.asp)
 - http://google.github.io/material-design-icons/
-- 
- - 1 Setup - Router
- - 2 Authentication
- - 3 Redux - Login
- - 4 RefreshToken
- - 5 Register
- - 6 Header - Logout
- - 7 Search - Header
- - 8 User Info Profile
- - 9 Edit Profile(1)
- - 10 Edit Profile(2)
- - 11 Follow(1)
- - 12 Follow(2)
- - 13 status(1)
- - 14 status(2)
- - 15 status(3)
- - 16 Get Posts
- - 17 Update Posts
- - 18 Like Post
- - 19 Create Comments
- - 20 Comments Display
- - 21 Edit Like Comment
- - 0 New Demo
- - 22 Reply Comment
- - 23 Detail Post
- - 24 Discover Loadmore
- - 25 DeletePost
- - 26 Suggestions
- - 27 SavePost
- - 28 RealTime
- - 29 Create Notify
- - 30 getNotifies
- - 31 Realtime Notify
- - 32 DeleteAllNotifies
- - 33 Message
- - 34 PostVideos + Icons
- - 35 AddMessage
- - 36 Get Messages
- - 37 Realtime Message
- - 38 Delete Message
- - 39 Online-Offline
- - 40 Call Modal
- - 41 Call Realtime
- - 42 Stream Call
- - 43 End Call
- - 44 Deploy Heroku
+
+
+
+ 
