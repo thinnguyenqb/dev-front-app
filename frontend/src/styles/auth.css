@@ -1,10 +1,15 @@
 .auth_page{
   width: 100%;
   min-height: 100vh;
-  background: #fdfdfd;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.login_form{
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  
 }
 .auth_page form{
   background: #fff;
@@ -26,3 +31,32 @@
   cursor: pointer;
   opacity: 0.5;
 }
+
+h3 {
+  text-transform: uppercase;
+	background: linear-gradient(to right, #7a3eda 0%, #2864f0 100%);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%)}
+.btn-grad {
+    padding: 7px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: block;
+    border: none;
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+  

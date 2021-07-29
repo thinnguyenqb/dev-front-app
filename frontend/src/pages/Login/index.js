@@ -26,7 +26,7 @@ const Login = () => {
   }
   return (
     <div className="auth_page">
-      <form onSubmit={handleSubmit}>
+      <form className="login_form" onSubmit={handleSubmit}>
         <h3 className="text-uppercase text-center mb-4">Instagram</h3>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
@@ -61,13 +61,13 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="btn btn-dark w-100"
+          className="btn btn-dark w-100 btn-grad"
           disabled={email && password ? false : true}
         >
           Login
         </button>
-        <p className="my-2">
-          You don't have an account?{" "}
+        <p className="my-2" style={{display: "flex", justifyContent:"center"}}>
+          You don't have an account? {' '}
           <Link to="/register" style={{ color: "crimson" }}>
             Register Now
           </Link>

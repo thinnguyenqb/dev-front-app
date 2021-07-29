@@ -42,3 +42,6 @@ img {
 /* -------- AUTH ---------- */
 @import url("./auth.css");
 
+
+/* -------- LOADING ---------- */
+@import url("./loading.css");
