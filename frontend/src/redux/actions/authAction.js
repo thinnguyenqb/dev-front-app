@@ -97,3 +97,18 @@ export const register = (data) => async(dispatch) => {
     })
   }
 }
+
+export const logout = (data) => async(dispatch) => {
+  try {
+    localStorage.removeItem('firstlogin')
+    await postDataAPI('logout')
+    window.location.href = "/"
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {
+        error: err.response.data.msg
+      }
+    })
+  }
+}

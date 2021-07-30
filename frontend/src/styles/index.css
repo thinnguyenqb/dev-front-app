@@ -19,7 +19,7 @@ code {
   display: none;
 }
 #theme:checked ~ * {
-  filter: invert(1);
+  filter: invert(90%);
 }
 
 .App {
@@ -39,9 +39,18 @@ img {
   object-fit: cover;
 }
 
+.avatar{
+  width: 29px;
+  height: 29px;
+  border-radius:50%
+}
+
 /* -------- AUTH ---------- */
 @import url("./auth.css");
 
 
 /* -------- LOADING ---------- */
 @import url("./loading.css");
+
+/* -------- HEADER ---------- */
+@import url("./header.css");

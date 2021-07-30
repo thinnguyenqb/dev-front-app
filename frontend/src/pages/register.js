@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { register } from "../../redux/actions/authAction";
+import { register } from "../redux/actions/authAction";
 import { useSelector, useDispatch } from "react-redux";
 
 const Register = () => {
