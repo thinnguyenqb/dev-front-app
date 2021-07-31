@@ -9,7 +9,7 @@ import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux"; 
 import {refreshToken} from "./redux/actions/authAction"
 import Alert from './components/alert/Alert'
-import Header from './components/Header'
+import Header from './components/header/Header'
 
 const App = () => {
   const {auth} = useSelector(state => state) // cần lấy ra auth để check

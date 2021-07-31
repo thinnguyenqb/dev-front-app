@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from './../redux/actions/authAction';
-import { GLOBALTYPES } from './../redux/actions/globalTypes';
-import Avatar from "./Avatar";
+import { logout } from '../../redux/actions/authAction';
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
+import Avatar from "../Avatar";
 
 
-const Header = () => {
+const Menu = () => {
   const navLinks = [
     { label: "Home", icon: "home", path: "/"},
     { label: "Message", icon: "near_me", path: "/message" },
@@ -24,15 +24,7 @@ const Header = () => {
   }
 
   return (
-    <>
-      <nav
-        className="navbar navbar-expand-lg navbar-light bg-light justify-content-around align-middle"
-        style={{ border: "1px solid rgba(0,0,0,.15)"}}
-      >
-        <Link className="navbar-brand" to="/">
-          Instagram
-        </Link>
-        <div className="Menu">
+    <div className="Menu">
           <ul className="navbar-nav mr-auto">
             {navLinks.map((link, index) => (
               <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
@@ -53,7 +45,7 @@ const Header = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <Avatar src={auth.user.avatar}/>
+                <Avatar src={auth.user.avatar} size={"medium-avatar"}/>
               </span>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>
@@ -75,9 +67,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
-      </nav>
-    </>
-  );
-};
+      
+  )
+}
 
-export default Header;
+export default Menu
