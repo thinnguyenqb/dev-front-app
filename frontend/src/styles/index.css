@@ -42,7 +42,6 @@ img {
 /* -------- AUTH ---------- */
 @import url("./auth.css");
 
-
 /* -------- LOADING ---------- */
 @import url("./loading.css");
 
@@ -51,4 +50,7 @@ img {
 
 /* -------- AVATAR ---------- */
 @import url("./avatar.css");
+
+/* -------- HEADER ---------- */
+@import url("./header.css");
 

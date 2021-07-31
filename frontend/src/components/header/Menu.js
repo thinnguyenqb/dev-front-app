@@ -24,8 +24,8 @@ const Menu = () => {
   }
 
   return (
-    <div className="Menu">
-          <ul className="navbar-nav mr-auto">
+    <div className="menu">
+          <ul className="navbar-nav flex-row mr-auto">
             {navLinks.map((link, index) => (
               <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
                 <Link className="nav-link" to={link.path}>
