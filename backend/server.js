@@ -11,7 +11,7 @@ app.use(cookieParser())
 
 //Routes
 app.use('/api', require('./routes/authRouter'))
-
+app.use('/api', require('./routes/userRouter'))
 
 //Connect DB    
 const URI = process.env.MONGODB_URL
@@ -23,6 +23,7 @@ mongoose.connect(URI, {
     useUnifiedTopology: true
 }, err => {
     if(err) throw err;
+
     console.log('Connected to mongodb')
 })
 
