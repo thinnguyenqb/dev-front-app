@@ -1,5 +1,6 @@
 import React from 'react'
 import Avatar from './Avatar'
+import {Link} from 'react-router-dom'
 
 const UserCard = ({user, border}) => {
   return (
