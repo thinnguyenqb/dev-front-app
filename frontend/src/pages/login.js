@@ -1,7 +1,7 @@
 import React, { useState} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { login } from '../redux/actions/authAction'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const initialState = { 
@@ -13,9 +13,9 @@ const Login = () => {
 
   const [typePass, setTypePass] = useState(false)
 
-  const { auth } = useSelector(state => state)
+  //const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
-  const history = useHistory()
+  //const history = useHistory()
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
