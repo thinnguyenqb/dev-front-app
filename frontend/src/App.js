@@ -5,7 +5,6 @@ import PrivateRouter from "./customRouter/PrivateRouter";
 import Home from './pages/home'
 import Login from './pages/login'
 import Register from './pages/register'
-import Message from './pages/message'
 import React, {useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux"; 
 import {refreshToken} from "./redux/actions/authAction"

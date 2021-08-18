@@ -45,14 +45,13 @@ const Info = () => {
                 
                 
               </div>
-              <div>
-                <span>{user.followers.length} Followers</span>
+              <div className="follow_btn">
+                <span className="mr-4">{user.followers.length} Followers</span>
+                <span className="ml-4">{user.following.length} Following</span>
               </div>
-              <div>
-                <span>{user.following.length} Following</span>
-              </div>
-              <h6>{user.fullname}</h6>
-              <p>{user.address}</p>
+             
+              <h6>{user.fullname} - <span className="text-danger">{user.mobile}</span> </h6> 
+              <p className="m-0">{user.address}</p>
               <h6>{user.email}</h6>
               <a href={user.website} target="_blank" rel="noreferrer">
                 {user.website}
