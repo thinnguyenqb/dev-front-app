@@ -25,48 +25,48 @@ const Menu = () => {
 
   return (
     <div className="menu">
-          <ul className="navbar-nav flex-row mr-auto">
-            {navLinks.map((link, index) => (
-              <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
-                <Link className="nav-link" to={link.path}>
-                  <span className="material-icons d-flex align-items-center">
-                    {link.icon}
-                  </span>
-                </Link>
-              </li>
-            ))}
-            <li className="nav-item dropdown">
-              <span
-                className="nav-link dropdown-toggle"
-                href="http://localhost:3000/"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <Avatar src={auth.user.avatar} size={"medium-avatar"}/>
+      <ul className="navbar-nav flex-row mr-auto">
+        {navLinks.map((link, index) => (
+          <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
+            <Link className="nav-link" to={link.path}>
+              <span className="material-icons d-flex align-items-center">
+                {link.icon}
               </span>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>
-                  Profile
-                </Link>
-                <label htmlFor="theme" className="dropdown-item"
-                  onClick={() => dispatch({type: GLOBALTYPES.THEME, payload: !theme
-                  })}
-                >
-                  {theme ? "Light mode" : "Dark mode"}
-                </label>
+            </Link>
+          </li>
+        ))}
+        <li className="nav-item dropdown">
+          <span
+            className="nav-link dropdown-toggle"
+            href="http://localhost:3000/"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <Avatar src={auth.user.avatar} size={"medium-avatar"}/>
+          </span>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>
+              Profile
+            </Link>
+            <label htmlFor="theme" className="dropdown-item"
+              onClick={() => dispatch({type: GLOBALTYPES.THEME, payload: !theme
+              })}
+            >
+              {theme ? "Light mode" : "Dark mode"}
+            </label>
 
-                <div className="dropdown-divider"></div>
-                <Link className="dropdown-item" to={`/`}
-                onClick={() => dispatch(logout())}>
-                  Logout
-                </Link>
-              </div>
-            </li>
-          </ul>
-        </div>
+            <div className="dropdown-divider"></div>
+            <Link className="dropdown-item" to={`/`}
+            onClick={() => dispatch(logout())}>
+              Logout
+            </Link>
+          </div>
+        </li>
+      </ul>
+    </div>
       
   )
 }

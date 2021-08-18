@@ -35,7 +35,7 @@
   flex: 3;
 }
 .info_content_title button{
-  flex: 2;
+  flex: 1;
 }
 .info_container .follow_btn{
   color: teal;
@@ -92,7 +92,7 @@
   width: 100%;
   height: 50%;
   text-align: center;
-  color: orange;
+  color: #4F46E5;
   transition: 0.3s ease-in-out;
   background: #fff5;
 }
@@ -111,6 +111,18 @@
 ::-webkit-file-upload-button{
   cursor: pointer;
 }
+
+.btn-more{
+  background-color: #4F46E5;
+  color: white;
+  opacity: 1;
+}
+
+.btn-more:hover{
+  background-color: #4338CA;
+  color: white;
+}
+
 
 /* ----------- Follow ------- */
 .follow{
