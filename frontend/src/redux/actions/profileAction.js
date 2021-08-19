@@ -75,7 +75,17 @@ export const updateProfileUser = ({userData, avatar, auth}) => async (dispatch) 
 }
 
 export const follow = ({ users, user, auth }) => async (dispatch) => {
-  let newUser = { ...user, followers: [...user.followers, auth.user] }
+  let newUser;
+  //update list card user
+  if (users.every(item => item._id !== user.id)) {
+    newUser = { ...user, followers: [...user.followers, auth.user] }
+  } else {
+    users.forEach(item => {
+      if (item._id === user._id) {
+        newUser = {...item, followers: [...item.followers, auth.user]}
+      }
+    })
+  }
   
   dispatch({
     type: PROFILE_TYPES.FOLLOW,
@@ -101,9 +111,17 @@ export const follow = ({ users, user, auth }) => async (dispatch) => {
 }
 
 export const unfollow = ({ users, user, auth }) => async (dispatch) => {
-  let newUser = {
-    ...user,
-    followers: DeleteData(user.followers, auth.user._id)
+  
+  let newUser;
+  //update list card user
+  if (users.every(item => item._id !== user.id)) {
+    newUser = { ...user, followers: DeleteData(user.followers, auth.user._id) }
+  } else {
+    users.forEach(item => {
+      if (item._id === user._id) {
+        newUser = {...item, followers: DeleteData(item.followers, auth.user._id) }
+      }
+    })
   }
   
   dispatch({
