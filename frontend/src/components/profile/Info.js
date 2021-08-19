@@ -40,7 +40,7 @@ const Info = () => {
                     onClick={() => setOnEdit(true)}>
                       Edit Profile
                     </button>
-                    : <FollowBtn />
+                    : <FollowBtn user={user}/>
                 }
                 
                 
