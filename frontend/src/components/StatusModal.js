@@ -12,7 +12,7 @@ const StatusModal = () => {
   const [tracks, setTracks] = useState('')
 
   const videoRef = useRef()
-  const refCanvar = useRef()
+  const refCanvas = useRef()
 
   const handleChangeImages = e => {
     const files = [...e.target.files]
@@ -49,7 +49,25 @@ const StatusModal = () => {
           const track = mediaStream.getTracks()
           setTracks(track[0])
       }).catch(err => console.log(err))
+    }
   }
+
+  const handleStopStream = () => {
+    tracks.stop()
+    setStream(false)
+  }
+
+  const handleCapture = () => {
+    const width = videoRef.current.clientWidth;
+        const height = videoRef.current.clientHeight;
+
+        refCanvas.current.setAttribute("width", width)
+        refCanvas.current.setAttribute("height", height)
+
+        const ctx = refCanvas.current.getContext('2d')
+        ctx.drawImage(videoRef.current, 0, 0, width, height)
+        let URL = refCanvas.current.toDataURL()
+        setImages([...images, {camera: URL}])
   }
 
   return (
@@ -78,7 +96,7 @@ const StatusModal = () => {
             {
               images.map((img, index) => (
                 <div key={index} id="file_img">
-                  <img src={URL.createObjectURL(img)}
+                  <img src={img.camera ? img.camera : URL.createObjectURL(img)}
                     alt="images" className="img-thumbnail"
                     style={{filter: theme ? 'invert(1)' : 'invert(0)'}}
                   />
@@ -86,37 +104,48 @@ const StatusModal = () => {
                     className="far fa-trash-alt"
                     id="image_trash"
                     onClick={() => deleteImages(index)}
+                    style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
                   >
                   </i>
-                  {/* <span>&times;</span> */}
                 </div>
               ))
             }
           </div>
           
           {
-            stream && <div className="stream">
+            stream &&
+            <div className="stream position-relative">
               <video autoPlay muted ref={videoRef} width="100%" height="100%"
                 style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
               />
-              <span>&times;</span>
-              <canvas ref={refCanvar}/>
+              <i class="fas fa-power-off"
+                onClick={handleStopStream}
+                style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+              ></i>
+              <canvas ref={refCanvas} style={{display: "none"}}/>
             </div>
           }
 
           <div className="input_images" style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}>
-            <i className="fas fa-camera" onClick={handleStream}/>
-            <div className="file_upload">
-              <i className="fas fa-image" />
-              <input
-                type="file"
-                name="file"
-                id="file"
-                multiple
-                accept="image/*"
-                onChange={handleChangeImages}
-              />
-            </div>
+            {
+              stream
+                ? <i className="fas fa-camera" onClick={handleCapture}/>
+                :
+                <>
+                  <i className="fas fa-camera" onClick={handleStream}/>
+                  <div className="file_upload">
+                    <i className="fas fa-image" />
+                    <input
+                      type="file"
+                      name="file"
+                      id="file"
+                      multiple
+                      accept="image/*"
+                      onChange={handleChangeImages}
+                    />
+                  </div>
+                </>
+            }
           </div>
         </div>
         <div className="status_footer mt-3">
