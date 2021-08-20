@@ -78,8 +78,12 @@ const StatusModal = () => {
       return dispatch({
         type: GLOBALTYPES.ALERT, payload: {error: "Please add you photo"}
       })
-    dispatch(createPost({content, images, auth}))
+    dispatch(createPost({ content, images, auth }))
     
+    setContent('')
+    setImages([])
+    if (tracks) tracks.stop()
+    dispatch({ type: GLOBALTYPES.STATUS, payload: false})    
   }
 
   return (

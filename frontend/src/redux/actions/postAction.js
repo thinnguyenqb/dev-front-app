@@ -17,9 +17,9 @@ export const createPost = ({ content, images, auth }) =>  async (dispatch) => {
     //console.log(media)
 
     const res = await postDataAPI('posts', { content, images: media }, auth.token)
-    console.log(res)
+    //console.log(res)
 
-    
+    dispatch({ type: POST_TYPES.CREATE_POST, payload: res.data.newPost })
     
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } })
     
