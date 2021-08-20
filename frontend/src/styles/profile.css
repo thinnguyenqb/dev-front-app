@@ -112,17 +112,7 @@
   cursor: pointer;
 }
 
-.btn-more{
-  background-color: #4F46E5;
-  color: white;
-  opacity: 1;
-}
 
-.btn-more:hover{
-  background-color: #4338CA;
-  color: white;
-  
-}
 
 .invert-dark
 

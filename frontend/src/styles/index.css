@@ -40,6 +40,44 @@ img {
   object-fit: cover;
 }
 
+/*======Custom Button=======*/
+
+.btn-more{
+  color: white;
+  background: #8E2DE2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  
+  background: linear-gradient(to right, #4A00E0, #8E2DE2); 
+  filter: none;
+}
+
+.btn-more:hover{
+  color: white;
+  background: #8E2DE2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #554ac9, #8E2DE2);  
+  background: linear-gradient(to right, #554ac9, #8E2DE2); 
+}
+
+/*======Custom Scrollbar=======*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(230, 230, 230); 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(194, 194, 194, 0.533); 
+  border-radius: 10px;
+}
+
+
+
+
 /* -------- AUTH ---------- */
 @import url("./auth.css");
 
