@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GLOBALTYPES } from "../redux/actions/globalTypes";
 
@@ -8,6 +8,11 @@ const StatusModal = () => {
 
   const [content, setContent] = useState("");
   const [images, setImages] = useState([])
+  const [stream, setStream] = useState(false)
+  const [tracks, setTracks] = useState('')
+
+  const videoRef = useRef()
+  const refCanvar = useRef()
 
   const handleChangeImages = e => {
     const files = [...e.target.files]
@@ -31,6 +36,20 @@ const StatusModal = () => {
     const newArr = [...images]
     newArr.splice(index, 1)
     setImages(newArr)
+  }
+
+  const handleStream = () => {
+    setStream(true)
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+      navigator.mediaDevices.getUserMedia({video: true})
+      .then(mediaStream => {
+          videoRef.current.srcObject = mediaStream
+          videoRef.current.play()
+
+          const track = mediaStream.getTracks()
+          setTracks(track[0])
+      }).catch(err => console.log(err))
+  }
   }
 
   return (
@@ -74,8 +93,19 @@ const StatusModal = () => {
               ))
             }
           </div>
-          <div className="input_images" style={{filter: theme ? 'invert(1)' : 'invert(0)'}}>
-            <i className="fas fa-camera" />
+          
+          {
+            stream && <div className="stream">
+              <video autoPlay muted ref={videoRef} width="100%" height="100%"
+                style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+              />
+              <span>&times;</span>
+              <canvas ref={refCanvar}/>
+            </div>
+          }
+
+          <div className="input_images" style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}>
+            <i className="fas fa-camera" onClick={handleStream}/>
             <div className="file_upload">
               <i className="fas fa-image" />
               <input
