@@ -1,3 +1,6 @@
+//=================================
+// FUNC UPLOAD IMAGE CLOUDINARY
+//=================================
 export const checkImage = (file) => {
   let err = ""
   if(!file) return err = "File does not exist."
@@ -11,12 +14,12 @@ export const checkImage = (file) => {
   return err;
 }
 
-
 export const imageUpload = async (images) => {
   let imgArr = [];
   for(const item of images){
       const formData = new FormData()
 
+      //No check type image from camera
       if(item.camera){
           formData.append("file", item.camera)
       }else{
@@ -25,10 +28,7 @@ export const imageUpload = async (images) => {
       
       formData.append("upload_preset", "nichtztl")
       formData.append("cloud_name", "ericnguyen-cop")
-      
-      //efxjficn
-      //https://api.cloudinary.com/v1_1/devat-channel/upload
-      //https://api.cloudinary.com/v1_1/ericnguyen-cop/image/upload
+    
       const res = await fetch("https://api.cloudinary.com/v1_1/ericnguyen-cop/upload", {
           method: "POST",
           body: formData
