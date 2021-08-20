@@ -27,6 +27,12 @@ const StatusModal = () => {
     setImages([...images, ...newImages])
   }
 
+  const deleteImages = (index) => {
+    const newArr = [...images]
+    newArr.splice(index, 1)
+    setImages(newArr)
+  }
+
   return (
     <div className="status_modal">
       <form>
@@ -57,7 +63,12 @@ const StatusModal = () => {
                     alt="images" className="img-thumbnail"
                     style={{filter: theme ? 'invert(1)' : 'invert(0)'}}
                   />
-                  <i className="far fa-trash-alt" id="image_trash"></i>
+                  <i
+                    className="far fa-trash-alt"
+                    id="image_trash"
+                    onClick={() => deleteImages(index)}
+                  >
+                  </i>
                   {/* <span>&times;</span> */}
                 </div>
               ))
