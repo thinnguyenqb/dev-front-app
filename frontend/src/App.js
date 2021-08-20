@@ -10,9 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {refreshToken} from "./redux/actions/authAction"
 import Alert from './components/alert/Alert'
 import Header from './components/header/Header'
+import StatusModal from "./components/StatusModal";
 
 const App = () => {
-  const {auth} = useSelector(state => state) // cần lấy ra auth để check
+  const {auth, status} = useSelector(state => state) // cần lấy ra auth để check
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -25,8 +26,9 @@ const App = () => {
       <Alert/>
       <input type="checkbox" id="theme"/>
       <div className="App"> 
-        {auth.token && <Header/>}
+        {auth.token && <Header/>} 
         <div className="main">
+          {status && <StatusModal />}
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />
           

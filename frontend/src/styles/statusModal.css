@@ -1,0 +1,74 @@
+.status_modal{
+  position: fixed;
+  background: #0008;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.status_modal form{
+  max-width: 450px;
+  width: 100%;
+  background: white;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 5px;
+
+}
+
+.status_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  transform: translateY(-13px);
+}
+
+.status_header span{
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  transform: translateY(-7px);
+}
+
+.status_body textarea{
+  width: 100%;
+  min-height: 150px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.status_body .input_images{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: #4F46E5;
+}
+
+.status_body i{
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.status_body .file_upload{
+  overflow: hidden;
+  margin-left: 10px;
+  position: relative;
+  color: #4F46E5;
+}
+
+.status_body .file_upload .fa-image{
+  font-size: 34px;
+}
+
+.status_body .input_images .file_upload #file{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}

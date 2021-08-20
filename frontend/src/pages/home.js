@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import Status from "../components/home/Status";
+import Posts from "../components/home/Posts";
 
 function Home() {
-    return (
-        <div>
-            <h2>Home Page</h2>
-        </div>
-    )
+  return (
+    <div className="home row mx-0">
+      <div className="col-md-8">
+        <Status />
+        <Posts />
+      </div>
+
+      <div className="col-md-4">
+      </div>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
