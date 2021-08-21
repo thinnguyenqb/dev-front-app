@@ -15,10 +15,47 @@
   color: #555;
   padding: 0 20px;
   text-align: left;
-  margin: 0 10px 0 20px;
+  margin: 0 0px 0 10px;
 
 }
 
 .status .statusBtn:hover{
   background: #ddd;
 }
+
+/* =========POSTS========= */
+
+.posts .card{
+  box-shadow: none;
+}
+
+.posts .card_header{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  cursor: pointer;
+  padding: 15px 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.posts .card_header .card_name{ 
+  transform: translateY(4px);
+  margin-left: 10px;
+}
+
+.posts .card_header .dropdown-menu{
+  position: absolute;
+  left: inherit !important;
+  right: -26px;
+  width: 100px;
+}
+
+.posts .card_header .dropdown-item{
+  display: flex;
+  margin: 5px 0;
+  padding: none;
+}
+
+.posts .card_header .dropdown-item span{
+  margin-right: 5px;
+}
+

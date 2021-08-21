@@ -23,7 +23,7 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload.posts,
-        loading: action.payload.result
+        result: action.payload.result,
       };
     default:
       return state;
