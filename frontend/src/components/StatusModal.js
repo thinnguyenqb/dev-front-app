@@ -134,7 +134,7 @@ const StatusModal = () => {
               <video autoPlay muted ref={videoRef} width="100%" height="100%"
                 style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
               />
-              <i class="fas fa-power-off"
+              <i className="fas fa-power-off"
                 onClick={handleStopStream}
                 style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
               ></i>
