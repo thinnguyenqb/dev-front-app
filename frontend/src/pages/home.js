@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Status from "../components/home/Status";
 import Posts from "../components/home/Posts";
 import { useSelector } from 'react-redux';
@@ -10,7 +10,6 @@ function Home() {
     <div className="home row mx-0">
       <div className="col-md-8">
         <Status />
-
         {
           homePosts.loading
             ? <img src={LoadIcon} alt="loading" className="d-block mx-auto" width="80px"/>

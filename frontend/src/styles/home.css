@@ -59,3 +59,15 @@
   margin-right: 5px;
 }
 
+
+/* ========== POST CARD BODY ========== */
+.card_body-content{
+  padding: 0 25px;
+  margin: 10px 0px;
+}
+
+.card_body-content .readMore{
+  color: blueviolet;
+  font-weight: 600;
+  cursor: pointer;
+}

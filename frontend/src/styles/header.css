@@ -114,6 +114,8 @@
     width: 100%;
     border: 1px solid rgb(0, 0, 0, .15);
     z-index: 2;
+    background-color: #f8f9fa;
+    opacity: 1;
   }
 
   .header .menu .navbar-nav{

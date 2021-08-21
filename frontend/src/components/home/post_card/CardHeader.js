@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import Avatar from '../../Avatar'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 
 
 
@@ -35,15 +35,15 @@ const CardHeader = ({ post }) => {
             auth.user._id === post.user._id &&
             <>
               <div className="dropdown-item">
-                <span class="material-icons-two-tone">edit</span>Edit Post
+                <span className="material-icons-two-tone">edit</span>Edit Post
               </div>
               <div className="dropdown-item">
-                <span class="material-icons-two-tone">delete_outline</span>Delete Post
+                <span className="material-icons-two-tone">delete_outline</span>Delete Post
               </div>
             </>
           }
           <div className="dropdown-item">
-            <span class="material-icons-round">content_copy</span>Delete Post
+            <span className="material-icons-round">content_copy</span>Share Post
           </div>
           
         </div>
