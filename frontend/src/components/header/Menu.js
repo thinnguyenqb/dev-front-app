@@ -8,10 +8,10 @@ import Avatar from "../Avatar";
 
 const Menu = () => {
   const navLinks = [
-    { label: "Home", icon: "home", path: "/"},
+    { label: "Home", icon: "cottage", path: "/"},
     { label: "Message", icon: "near_me", path: "/message" },
     { label: "Discover", icon: "explore", path: "/discover" },
-    { label: "Notify", icon: "favorite", path: "/notify" },
+    { label: "Notify", icon: "favorite_border", path: "/notify" },
   ];
 
   const {auth, theme} = useSelector(state => state)
@@ -29,7 +29,7 @@ const Menu = () => {
         {navLinks.map((link, index) => (
           <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
             <Link className="nav-link" to={link.path}>
-              <span className="material-icons d-flex align-items-center">
+              <span className="material-icons-outlined d-flex align-items-center">
                 {link.icon}
               </span>
             </Link>

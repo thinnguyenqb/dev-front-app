@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import Search from "./Search";
-import imageName  from '../../images/ig-logo.png'
+import imageName  from '../../images/ig-logo.svg'
 
 const Image = props => {
   const { alt, ...otherProps } = props;

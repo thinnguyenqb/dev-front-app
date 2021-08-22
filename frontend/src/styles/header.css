@@ -22,8 +22,10 @@
 }
 .header .menu li.active{
   opacity: 1;
+  background-color: blueviolet;
+  border-radius: 10px;
 }
-.header .menu .material-icons{
+.header .menu .material-icons-outlined{
   font-size: 30px;
 }
 .header .menu .dropdown-menu{
