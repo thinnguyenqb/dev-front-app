@@ -2,12 +2,18 @@ import React from 'react'
 import moment from 'moment'
 import Avatar from '../../Avatar'
 import { Link } from 'react-router-dom'
-import { useSelector} from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
 
 
 const CardHeader = ({ post }) => {
-  const { auth } = useSelector(state => state)
+  const { auth } = useSelector(state => state) 
+  const dispatch = useDispatch()
+  
+  const handleEditPost = () => {
+    console.log(post)
+    dispatch({ type: GLOBALTYPES.STATUS, payload: {...post, onEdit: true}})
+  }
   
   return (
     <div className="card_header">
@@ -34,7 +40,7 @@ const CardHeader = ({ post }) => {
           {
             auth.user._id === post.user._id &&
             <>
-              <div className="dropdown-item">
+              <div className="dropdown-item" onClick={handleEditPost}>
                 <span className="material-icons-two-tone">edit</span>Edit Post
               </div>
               <div className="dropdown-item">

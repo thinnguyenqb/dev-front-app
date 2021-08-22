@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import Carousel from "../../Carousel";
+import { useSelector } from "react-redux";
 
 const CardBody = ({ post }) => {
   const [readMore, setReadMore] = useState(false)
 
+  const { theme } = useSelector(state => state)
   return (
     <div className="card_body">
       <div className="card_body-content">
@@ -16,7 +18,9 @@ const CardBody = ({ post }) => {
         </span>
         {
           post.content.length > 160 &&
-          <span className="readMore" onClick={() => setReadMore(!readMore) }>
+          <span className="readMore" onClick={() => setReadMore(!readMore)}
+            style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+          >
             {readMore ? 'Hide content': 'Read more'}
           </span>
         }

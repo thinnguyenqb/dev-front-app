@@ -71,3 +71,63 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.carousel-inner{
+  position: relative;
+}
+
+.carousel-inner .img{
+  position: absolute;
+}
+
+.carousel-indicators li {
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  padding: 3px;
+  position: relative;
+  margin: 0 4px;
+  background-color: transparent;
+  opacity: 1;
+  top: 50px;
+  left: 0px;
+  bottom: 50px;
+  right: 0px;
+}
+
+.carousel-indicators li:after {
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid blueviolet;
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0px;
+  bottom: 50px;
+  right: 0px;
+}
+
+.carousel-indicators li.active {
+  background-color: blueviolet;
+}
+
+
+/* ========== POST CARD FOOTER ========== */
+.card_icon_menu{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.card_icon_menu i{
+  font-size: 20px;
+  margin: 8px;
+  padding: 10px 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.card_icon_menu .bookmark{
+  padding: 10px;
+}
