@@ -106,7 +106,7 @@ const StatusModal = () => {
               dispatch({ type: GLOBALTYPES.STATUS, payload: false })
             }
           >
-            &times;
+            <i className="fas fa-times" style={{ fontSize: "20px" }}></i>
           </span>
         </div>
         <div className="status_body">

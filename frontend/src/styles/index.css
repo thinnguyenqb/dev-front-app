@@ -76,7 +76,8 @@ img {
 }
 
 
-
+/* -------- GLOBAL ---------- */
+@import url("./global.css");
 
 /* -------- AUTH ---------- */
 @import url("./auth.css");

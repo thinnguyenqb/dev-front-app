@@ -42,13 +42,13 @@ const EditProfile = ({user, setOnEdit}) => {
 
   return (
     <div className="edit_profile">
-      <button className="btn btn-danger btn_close"
-        onClick={() => setOnEdit(false)}>
-        <span aria-hidden="true">&times;    </span>
-          Close
-      </button>
-
       <form onSubmit={handleSubmit}>
+        <div className="status_header">
+          <h5>EditProfile</h5>
+          <span onClick={() => setOnEdit(false)}>
+            <i className="fas fa-times" style={{ fontSize: "20px" }}></i>
+          </span>
+        </div>
         <div className="info_avatar">
           <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
             alt="avatar" style={{ filter: theme ? 'invert(1)' : 'invert(0)' }} />
@@ -139,7 +139,11 @@ const EditProfile = ({user, setOnEdit}) => {
           </div>
         </div>
 
-        <button className="btn btn-more w-100" type="submit">Save</button>
+        <button className="btn btn-more w-100" type="submit"
+          style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+        >
+          Save
+        </button>
         
       </form>
     </div>

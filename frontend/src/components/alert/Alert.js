@@ -22,7 +22,7 @@ const Notify = () => {
         alert.success && 
         <Toast msg={{title: 'Success', body: alert.success}}
         handleShow={() => dispatch({type: GLOBALTYPES.ALERT, payload: {}})}
-        bgColor="bg-success"/>
+        bgColor="alert-bg-success"/>
       }
     </div>
   )

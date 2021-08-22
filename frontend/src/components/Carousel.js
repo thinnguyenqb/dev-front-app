@@ -36,13 +36,13 @@ const Carousel = ({images, id }) => {
           <>
               <a className="carousel-control-prev" href={`#image${id}`} role="button" data-slide="prev"
               style={{width: '5%'}}>
-                  <i class="fas fa-angle-left"></i>
+                  <i className="fas fa-angle-left"></i>
                   <span className="sr-only">Previous</span>
               </a>
 
               <a className="carousel-control-next" href={`#image${id}`} role="button" data-slide="next"
               style={{width: '5%'}}>
-                  <i class="fas fa-angle-right"></i>
+                  <i className="fas fa-angle-right"></i>
                   <span className="sr-only">Next</span>
               </a>
           </>

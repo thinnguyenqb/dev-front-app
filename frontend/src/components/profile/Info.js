@@ -10,7 +10,7 @@ import Following from './Following'
 
 const Info = () => {
   const {id} = useParams()
-  const {auth, profile} = useSelector(state => state)
+  const {auth, profile, theme} = useSelector(state => state)
   const dispatch = useDispatch()
 
   const [userData, setUserData] = useState([])
@@ -41,13 +41,13 @@ const Info = () => {
                 {
                   user._id === auth.user._id
                     ? <button className="btn btn-more"
-                    onClick={() => setOnEdit(true)}>
+                      onClick={() => setOnEdit(true)}
+                      style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+                      >
                       Edit Profile
                     </button>
                     : <FollowBtn user={user}/>
                 }
-                
-                
               </div>
               <div className="follow_btn">
                 <span className="mr-4" onClick={() => setShowFollowers(true)}>

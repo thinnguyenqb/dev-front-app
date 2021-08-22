@@ -12,8 +12,8 @@
   width: 70%;
   height: 100%;
 }
-.header .logo h1{
-  font-size: 2rem;
+.header .logo img{
+  width: 100px;
 } 
 
 /* ----------- Header Menu ---------- */
@@ -22,9 +22,9 @@
 }
 .header .menu li.active{
   opacity: 1;
-  background-color: blueviolet;
   border-radius: 10px;
 }
+
 .header .menu .material-icons-outlined{
   font-size: 30px;
 }
