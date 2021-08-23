@@ -1,18 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
 import LikeBotton from '../../LikeButton'
+import { useSelector, useDispatch } from 'react-redux'
+import { likePost } from '../../../redux/actions/postAction'
+import { unLikePost } from '../../../redux/actions/postAction'
 
 const CardFooter = ({ post }) => {
   const [isLike, setIsLike] = useState(false)
-  const [loadLike, setLoadLike] = useState('')
+  const [loadLike, setLoadLike] = useState(false)
 
-  const handleLike = () => {
+  const { auth } = useSelector(state => state)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (post.likes.find(like => like._id === auth.user._id)) {
+      setIsLike(true)
+    }  
+  }, [post.likes, auth.user._id])
+
+  const handleLike = async () => {
+    if (loadLike) return;
     setIsLike(true)
+    console.log(loadLike + "a")
+    setLoadLike(true)
+    console.log(loadLike + "b")
+    await dispatch(likePost({ post, auth }))
+    console.log(loadLike + "c")
+    setLoadLike(false)
+    console.log(loadLike + "d")
   }
 
-  const handleUnLike = () => {
+  const handleUnLike = async () => {
+    if (loadLike) return;
     setIsLike(false)
+    console.log(loadLike + "1")
+    setLoadLike(true)
+    console.log(loadLike + "2")
+    await dispatch(unLikePost({ post, auth }))
+    console.log(loadLike + "3")
+    setLoadLike(false)
+    console.log(loadLike + "4")
+    
   }
 
   return (
@@ -23,7 +51,7 @@ const CardFooter = ({ post }) => {
             handleLike={handleLike}
             handleUnLike={handleUnLike}
           />
-          
+
           <Link to={`/post/${post._id}`} className="text-dark">
             <i className="far fa-comment"/>
           </Link>

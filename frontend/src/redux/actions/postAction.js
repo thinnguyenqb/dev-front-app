@@ -87,3 +87,35 @@ export const updatePost = ({ content, images, auth, status }) => async (dispatch
     })
   }
 }
+
+export const likePost = ({ post, auth }) => async (dispatch) => {
+  //console.log(post)
+  const newPost = { ...post, likes: [...post.likes, auth.user] }
+  //console.log(newPost)
+  dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+  
+  try {
+    await patchDataAPI(`post/${post._id}/like`, null, auth.token)
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {error: err.response.data.msg}
+    })
+  }
+}
+
+export const unLikePost = ({ post, auth }) => async (dispatch) => {
+  //console.log(post)
+  const newPost = { ...post, likes: post.likes.filter(like => like._id !== auth.user._id) }
+  //console.log(newPost)
+  dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+
+  try {
+    await patchDataAPI(`post/${post._id}/unlike`, null, auth.token)
+  } catch (err) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: {error: err.response.data.msg}
+    })
+  }
+}
