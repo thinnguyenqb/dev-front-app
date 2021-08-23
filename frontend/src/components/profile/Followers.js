@@ -8,10 +8,9 @@ const Followers = ({ users, setShowFollowers }) => {
   return (
     <div className="follow">
       <div className="follow_box">
-
-        <div className="follow_content">
         <h5>Followers</h5>
-          <hr />
+        <hr />
+        <div className="follow_content">
           {
             users.map(user => (
               <UserCard key={user._id} user={user} setShowFollowers={setShowFollowers}>

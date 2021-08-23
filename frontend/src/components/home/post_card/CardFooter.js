@@ -21,26 +21,17 @@ const CardFooter = ({ post }) => {
   const handleLike = async () => {
     if (loadLike) return;
     setIsLike(true)
-    console.log(loadLike + "a")
     setLoadLike(true)
-    console.log(loadLike + "b")
     await dispatch(likePost({ post, auth }))
-    console.log(loadLike + "c")
     setLoadLike(false)
-    console.log(loadLike + "d")
   }
 
   const handleUnLike = async () => {
     if (loadLike) return;
     setIsLike(false)
-    console.log(loadLike + "1")
     setLoadLike(true)
-    console.log(loadLike + "2")
     await dispatch(unLikePost({ post, auth }))
-    console.log(loadLike + "3")
     setLoadLike(false)
-    console.log(loadLike + "4")
-    
   }
 
   return (

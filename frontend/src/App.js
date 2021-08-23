@@ -14,7 +14,7 @@ import StatusModal from "./components/StatusModal";
 import { getPosts } from "./redux/actions/postAction";
 
 const App = () => {
-  const {auth, status} = useSelector(state => state) // cần lấy ra auth để check
+  const {auth, status, modal} = useSelector(state => state) // cần lấy ra auth để check
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const App = () => {
     <Router>
       <Alert/>
       <input type="checkbox" id="theme"/>
-      <div className="App"> 
+      <div className={`App ${(status || modal) && 'mode'}`}>
         {auth.token && <Header/>} 
         <div className="main">
           {status && <StatusModal />}
