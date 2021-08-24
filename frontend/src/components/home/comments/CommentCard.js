@@ -2,14 +2,29 @@ import React, {useState, useEffect} from 'react'
 import Avatar from '../../Avatar'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import LikeButton from '../../LikeButton'
+import { useSelector, useDispatch } from 'react-redux'
+import CommentMenu from './commentMenu';
 
 const CommentCard = ({ comment, post }) => {
+  const { auth } = useSelector(state => state)
+  
   const [content, setContent] = useState('')
   const [readMore, setReadMore] = useState(false)
+
+  const [isLike, setIsLike] = useState(false)
   
   useEffect(() => {
     setContent(comment.content)
   }, [comment])
+
+  const handleLike = () => {
+    setIsLike(true)
+  }
+
+  const handleUnLike = () => {
+    setIsLike(false)
+  }
 
   const styleCard = {
     opacity: comment._id ? 1 : 0.5,
@@ -38,18 +53,22 @@ const CommentCard = ({ comment, post }) => {
             </span>
           }
         </div>
-      </div>
-        <div style={{cursor: 'pointer'}}>
-          <small className="text-muted mr-3">
-            {moment(comment.createdAt).fromNow()}
-          </small>
-          <small className="font-weight-bold mr-3">
-            {comment.likes.length} likes
-          </small>
-          <small className="font-weight-bold mr-3">
-            reply
-          </small>
+        <div className="d-flex align-items-center mr-2" style={{cursor: 'pointer'}}>
+          <CommentMenu post={post} comment={comment} auth={auth}/>
+          <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} />
         </div>
+      </div>
+      <div style={{cursor: 'pointer'}}>
+        <small className="text-muted mr-3">
+          {moment(comment.createdAt).fromNow()}
+        </small>
+        <small className="font-weight-bold mr-3">
+          {comment.likes.length} likes
+        </small>
+        <small className="font-weight-bold mr-3">
+          reply
+        </small>
+      </div>
     </div>
   )
 }
