@@ -33,7 +33,7 @@ const postCtrl = {
         .sort("-createdAt")
         .populate("user likes", "avatar username fullname") // only return the User (avatar username fullname)
         .populate({
-          path: "comment",
+          path: "comments",
           populate: {
             path: "user likes",
             select: "-password"

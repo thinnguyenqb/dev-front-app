@@ -31,7 +31,6 @@ const InputComment = ({ children, post }) => {
       <button type="submit" className="postBtn">
         Post
       </button>
-      
     </form>
   )
 }
