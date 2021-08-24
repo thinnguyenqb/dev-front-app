@@ -28,3 +28,18 @@
   margin-left: 20px;
   margin-right: 10px;
 }
+
+/* ========== COMMENTS ========== */
+.comment_display{
+  padding: 10px 25px;
+}
+
+.comment_card .comment_content{
+  background: #eee;
+  padding: 7px;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

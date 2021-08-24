@@ -11,8 +11,13 @@ const CommentCard = ({ comment, post }) => {
     setContent(comment.content)
   }, [comment])
 
+  const styleCard = {
+    opacity: comment._id ? 1 : 0.5,
+    pointerEvents: comment._id ? 'inherit' : 'none'
+  }
+
   return (
-    <div className="comment_card mt-2">
+    <div className="comment_card mt-2" style={styleCard}>
       <Link to={`/profile/${comment.user._id}`} className="d-flex text-dark">
         <Avatar src={comment.user.avatar} size="small-avatar" />
         <h6 className="mx-1">{comment.user.username}</h6>
@@ -33,19 +38,18 @@ const CommentCard = ({ comment, post }) => {
             </span>
           }
         </div>
+      </div>
         <div style={{cursor: 'pointer'}}>
           <small className="text-muted mr-3">
             {moment(comment.createdAt).fromNow()}
           </small>
-          <small className="text-muted mr-3">
+          <small className="font-weight-bold mr-3">
             {comment.likes.length} likes
           </small>
-          <small className="text-muted mr-3">
+          <small className="font-weight-bold mr-3">
             reply
           </small>
         </div>
-
-      </div>
     </div>
   )
 }

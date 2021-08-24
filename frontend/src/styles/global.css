@@ -7,3 +7,9 @@
   width: 100%;
   height: 100vh;
 }
+
+.readMore{
+  color: blueviolet;
+  font-weight: 600;
+  cursor: pointer;
+}
