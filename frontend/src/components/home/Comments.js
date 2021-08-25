@@ -11,6 +11,7 @@ const Comments = ({ post }) => {
     setComments(newCm)
     setShowComments(newCm.slice(newCm.length - next))
   }, [post.comments, next])
+
   return (
     <div className="comments">
       {

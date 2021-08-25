@@ -5,28 +5,42 @@ import moment from 'moment'
 import LikeButton from '../../LikeButton'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentMenu from './commentMenu';
-import { updateComment } from '../../../redux/actions/commentAction'
+import { updateComment, likeComment, unLikeComment } from '../../../redux/actions/commentAction'
 
 const CommentCard = ({ comment, post }) => {
   const [content, setContent] = useState('')
   const [readMore, setReadMore] = useState(false)
   
-  const [isLike, setIsLike] = useState(false)
   const [onEdit, setOnEdit] = useState(false)
+  const [isLike, setIsLike] = useState(false)
+  const [loadLike, setLoadLike] = useState(false)
   
   const { auth, theme } = useSelector(state => state)
   const dispatch = useDispatch()
   
   useEffect(() => {
     setContent(comment.content)
+    if (comment.likes.find(like => like._id === auth.user._id)) {
+      setIsLike(true)
+    }
   }, [comment])
 
-  const handleLike = () => {
+  const handleLike = async () => {
+    if (loadLike) return;
     setIsLike(true)
+    
+    setLoadLike(true)
+    await dispatch(likeComment({ comment, post, auth }))
+    setLoadLike(false)
   }
 
-  const handleUnLike = () => {
+  const handleUnLike = async () => {
+    if (loadLike) return;
     setIsLike(false)
+
+    setLoadLike(true)
+    await dispatch(unLikeComment({ comment, post, auth }))
+    setLoadLike(false)
   }
 
   const styleCard = {
