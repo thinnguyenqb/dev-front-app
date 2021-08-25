@@ -14,7 +14,7 @@ const CommentCard = ({ comment, post }) => {
   const [isLike, setIsLike] = useState(false)
   const [onEdit, setOnEdit] = useState(false)
   
-  const { auth } = useSelector(state => state)
+  const { auth, theme } = useSelector(state => state)
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -55,10 +55,19 @@ const CommentCard = ({ comment, post }) => {
           {
             onEdit
               ? <textarea rows="5" value={content}
-                onChange={ e => setContent(e.target.value)} />
+                onChange={e => setContent(e.target.value)}
+                style={{
+                  filter: theme ? 'invert(1)' : 'invert(0)',
+                  background: theme ? '#111111' : '#eee',
+                  color: theme ? 'white' : 'black'
+                }}
+              />
               :
               <div>
-                <span>
+                <span style={{
+                  filter: theme ? 'invert(1)' : 'invert(0)',
+                  color: theme ? 'white' : 'black'
+                }}>
                   {
                     content.length < 100 ? content :
                       readMore ? content + ' ' : content.slice(0, 100) + '...'
@@ -66,7 +75,10 @@ const CommentCard = ({ comment, post }) => {
                 </span>
                 {
                   content.length > 100 &&
-                  <span className="readMore" onClick={() => setReadMore(!readMore)}>
+                  <span className="readMore" 
+                    style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}
+                    onClick={() => setReadMore(!readMore)}
+                  >
                     {readMore ? 'High content' : 'Read more'}
                   </span>
                 }
@@ -75,7 +87,7 @@ const CommentCard = ({ comment, post }) => {
         </div>
         <div className="d-flex align-items-center mr-2" style={{cursor: 'pointer'}}>
           <CommentMenu post={post} comment={comment} auth={auth} setOnEdit={setOnEdit}/>
-          <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} />
+          <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} typeLike={false}/>
         </div>
       </div>
       <div style={{cursor: 'pointer'}}>

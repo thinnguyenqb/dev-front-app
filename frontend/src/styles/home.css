@@ -48,10 +48,14 @@
   right: -26px;
   width: 100px;
 }
-
+.posts .card_header .dropdown-menu :active{
+  background-color: #ddd;
+  color: black;
+  border-radius: 5px;
+}
 .posts .card_header .dropdown-item{
   display: flex;
-  margin: 5px 0;
+  
   padding: none;
 }
 

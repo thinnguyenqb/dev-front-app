@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import LikeBotton from '../../LikeButton'
+import LikeButton from '../../LikeButton'
 import { useSelector, useDispatch } from 'react-redux'
 import { likePost } from '../../../redux/actions/postAction'
 import { unLikePost } from '../../../redux/actions/postAction'
@@ -38,9 +38,10 @@ const CardFooter = ({ post }) => {
     <div className="card_footer">
       <div className="card_icon_menu">
         <div>
-          <LikeBotton isLike={isLike}
+          <LikeButton isLike={isLike}
             handleLike={handleLike}
             handleUnLike={handleUnLike}
+            typeLike={true}
           />
 
           <Link to={`/post/${post._id}`} className="text-dark">

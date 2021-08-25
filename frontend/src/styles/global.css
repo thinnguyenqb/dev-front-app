@@ -13,3 +13,22 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+
+.alert-box.hidden{
+	animation: hideAlert 8s ease forwards;
+}
+@keyframes hideAlert{
+	0%{
+		transform: translateX(-30px);		
+	}
+	40%{
+		transform: translateX(0%);	
+	}
+	80%{
+		transform: translateX(-10%);
+	}
+	100%{
+	   transform: translateX(110%);		
+	}
+}

@@ -5,7 +5,7 @@ const commentMenu = ({ post, comment, auth, setOnEdit }) => {
     return (
       <>
         <div className="dropdown-item" onClick={() => {setOnEdit(true)}}>
-          <span className="material-icons-two-tone">edit</span> Edit
+          <span className="material-icons-outlined">edit</span> Edit
         </div>
         <div className="dropdown-item">                   
           <span className="material-icons">delete_outline</span> Remove
@@ -18,7 +18,7 @@ const commentMenu = ({ post, comment, auth, setOnEdit }) => {
     {
       (post.user._id === auth.user._id || comment.user._id === auth.user._id) &&
       <div className="nav-item dropdown">
-        <span className="material-icons" id="moreLink" data-toggle="dropdown">
+        <span className="material-icons" id="moreLink" data-toggle="dropdown" style={{}}>
           more_vert
           </span>
         <div className="dropdown-menu" aria-labelledby="moreLink">
@@ -27,7 +27,7 @@ const commentMenu = ({ post, comment, auth, setOnEdit }) => {
               ? comment.user._id === auth.user._id
                 ? MenuItem()
                 : <div className="dropdown-item">
-                  <span className="material-icons">more_vert</span> Remove
+                  <span className="material-icons">delete_outline</span> Remove
                   </div>
               : comment.user._id === auth.user._id && MenuItem()
           }

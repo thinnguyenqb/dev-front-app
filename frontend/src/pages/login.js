@@ -59,7 +59,7 @@ const Login = () => {
               name="password"
             />
             <small onClick={() => setTypePass(!typePass)}>
-              {typePass ? 'Hide' : 'Show'}
+              {typePass ? <i className="far fa-eye-slash"/> : <i class="far fa-eye"/>}
             </small>
           </div>
         </div>

@@ -47,6 +47,8 @@
 .comment_card .comment_content .nav-item{
   cursor: pointer;
   opacity: 0;
+  display: flex;
+  align-items: center;
 }
 
 .comment_card .comment_content:hover .nav-item{
@@ -56,11 +58,19 @@
   position: absolute;
   right: 0;
   left: inherit;
+  
+  padding: 0px;
 }
+.comment_card .comment_content .dropdown-menu :active{
+  background-color: #ddd;
+  color: black;
+  border-radius: 5px;
+  
+} 
 
 .comment_card .comment_content .dropdown-item{
   display: flex;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .comment_card .comment_content .dropdown-item span{

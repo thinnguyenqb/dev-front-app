@@ -37,6 +37,13 @@
   border: #fff;
   transform: translateX(50%);
 }
+
+.header .menu .dropdown-menu :active{
+  background-color: #ddd;
+  color: black;
+  border-radius: 5px;
+}
+
 .header .menu label{
   cursor: pointer;
 }
