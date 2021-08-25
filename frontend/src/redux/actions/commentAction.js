@@ -1,14 +1,14 @@
-import { GLOBALTYPES } from "./globalTypes";
+import { GLOBALTYPES, EditData } from "./globalTypes";
 import { POST_TYPES } from './postAction';
-import { postDataAPI } from '../../utils/fetchData';
+import { postDataAPI, patchDataAPI } from '../../utils/fetchData';
 
-export const createComment = (post, newComment, auth) => async (dispatch) => {
+export const createComment = ({ post, newComment, auth }) => async (dispatch) => {
   //console.log({post, newComment, auth})
   const newPost = { ...post, comments: [...post.comments, newComment] }
   //console.log({post, newPost})
-
+  
   dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
-
+  
   try {
     const data = { ...newComment, postId: post._id }
     const res = await postDataAPI('comment', data, auth.token)
@@ -22,4 +22,15 @@ export const createComment = (post, newComment, auth) => async (dispatch) => {
   }
 }
 
+export const updateComment = ({ comment, post, content, auth }) => async (dispatch) => {
+  //console.log({comment, post, content, auth})
+  const newComments = EditData(post.comments, comment._id, { ...comment, content })
+  const newPost = { ...post, comments: newComments }
+  dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+  try {
+    patchDataAPI(`comment/${comment._id}`, { content }, auth.token  )
+  } catch (err) {
+    dispatch({ type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}})
+  }
+}
 

@@ -21,6 +21,18 @@ const commentCtrl = {
     } catch (err) {
       return res.status(500).json({ msg: err.message }); //server err
     }
+  },
+  updateComment: async (req, res) => {
+    try {
+      const { content } = req.body
+      await Comments.findOneAndUpdate({
+        _id: req.params.id, user: req.user._id
+      }, { content })
+      
+      res.json({msg: 'Update Success!'})
+    } catch (err) {
+      
+    }
   }
 }
 
