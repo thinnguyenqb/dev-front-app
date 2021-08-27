@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
 import Search from "./Search";
-import imageName from '../../images/ig-logo.svg'
+import imageName from '../../images/logo-icon.png'
 import { useSelector } from "react-redux";
 
 const Image = props => {
@@ -16,9 +16,10 @@ const Header = () => {
     <div className="header bg-light" style={{ display:"flex", justifyContent:"center", border: "1px solid rgba(0,0,0,.15)"}}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
         <Link to="/" className="logo">
-          <div className="navbar-brand text-uppercase p-0 m-0"
+          <div className="navbar-brand p-0 m-0"
           onClick={() => window.scrollTo({top: 0})}>
-            <Image alt="Logo" src={imageName} style={{ filter: theme ? 'invert(1)' : 'invert(0)' }}/>
+            <Image alt="Logo" src={imageName} style={{ width: "50px", filter: theme ? 'invert(1)' : 'invert(0)' }} />
+            <span style={{ fontWeight: "500", color: "#914cff"}}>KimQuy</span>
           </div>
         </Link>
         <Search />

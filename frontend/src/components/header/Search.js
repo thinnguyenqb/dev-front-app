@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDataAPI } from '../../utils/fetchData'
 import {GLOBALTYPES} from '../../redux/actions/globalTypes'
 import UserCard from '../UserCard'
-import LoadIcon from '../../images/loading5.1.gif'
+import LoadIcon from '../../images/loading1.gif'
 
 const Search = () => {
   const [search, setSearch] = useState('')

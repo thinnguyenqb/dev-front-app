@@ -87,8 +87,8 @@ const CommentCard = ({ children, comment, post, commentId }) => {
               <div>
                 {
                   comment.tag && comment.tag._id !== comment.user._id &&
-                  <Link to={`/profile/${comment.tag._id}`}>
-                    @{comment.tag.username} &nbsp; 
+                  <Link to={`/profile/${comment.tag._id}`} >
+                    @{comment.tag.username} &nbsp;
                   </Link>
                 }
                 <span style={{

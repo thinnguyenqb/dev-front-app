@@ -63,12 +63,12 @@ export const refreshToken = () => async(dispatch) => {
 }
 
 export const register = (data) => async(dispatch) => {
+  const check = valid(data) //function
+  //console.log(check.errMsg)
+  if(check.errLength > 0)
+  return dispatch({type: GLOBALTYPES.ALERT, payload: check.errMsg}) // redux
+  
   try {
-    const check = valid(data) //function
-    console.log(check.errMsg)
-    if(check.errLength > 0)
-    return dispatch({type: GLOBALTYPES.ALERT, payload: check.errMsg}) // redux
-
     //action loading
     dispatch({type: GLOBALTYPES.ALERT, payload: {loading: true}})
 

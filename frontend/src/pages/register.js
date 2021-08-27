@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Logo from '../images/logo-icon.png'
 import { Link, useHistory } from "react-router-dom";
 import { register } from "../redux/actions/authAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,6 +27,11 @@ const Register = () => {
     if (auth.token) history.push("/");
   }, [auth.token, history]);
 
+  const Image = props => {
+    const { alt, ...otherProps } = props;
+    return ( <img alt={alt} {...otherProps} />);
+  }
+
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -38,9 +44,10 @@ const Register = () => {
   return (
     <div className="auth_page">
       <form className="login_form" onSubmit={handleSubmit}>
-        <h3 className="text-uppercase text-center mb-4">Register</h3>
+      <Image alt="Logo" src={Logo} className="logo-icon show"/>
+        <h3 className="text-center mb-4">Create Account</h3>
         <div className="form-group">
-          <label htmlFor="fullname">Full Name</label>
+          <label htmlFor="fullname" className="font-weight-text text-muted">Full Name</label>
           <input
             type="text"
             className="form-control"
@@ -57,7 +64,7 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="username">User Name</label>
+          <label htmlFor="username" className="font-weight-text text-muted" >User Name</label>
           <input
             type="text"
             className="form-control"
@@ -74,7 +81,7 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1" className="font-weight-text text-muted">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -91,7 +98,7 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+          <label htmlFor="exampleInputPassword1" className="font-weight-text text-muted" >Password</label>
 
           <div className="pass">
             <input
@@ -105,7 +112,7 @@ const Register = () => {
             />
 
             <small onClick={() => setTypePass(!typePass)}>
-              {typePass ? "Hide" : "Show"}
+            {typePass ? <i className="far fa-eye-slash"/> : <i className="far fa-eye"/>}
             </small>
           </div>
 
@@ -115,7 +122,7 @@ const Register = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="cf_password">Confirm Password</label>
+          <label htmlFor="cf_password" className="font-weight-text text-muted">Confirm Password</label>
 
           <div className="pass">
             <input
@@ -129,7 +136,7 @@ const Register = () => {
             />
 
             <small onClick={() => setTypeCfPass(!typeCfPass)}>
-              {typeCfPass ? "Hide" : "Show"}
+              {typeCfPass ? <i className="far fa-eye-slash"/> : <i className="far fa-eye"/>}
             </small>
           </div>
 
@@ -139,7 +146,7 @@ const Register = () => {
         </div>
 
         <div className="row justify-content-between mx-0 mb-1">
-          <label htmlFor="male">
+          <label htmlFor="male" >
             Male:{" "}
             <input
               type="radio"
@@ -178,11 +185,11 @@ const Register = () => {
           Register
         </button>
         <p
-          className="my-2"
+          className="my-2 font-weight-text text-muted"
           style={{ display: "flex", justifyContent: "center" }}
         >
-          You already have an account?{" "}
-          <Link to="/login" style={{ color: "crimson" }}>
+          You already have an account? &nbsp;
+          <Link to="/" style={{ color: "#512bdc", fontWeight: "500" }}>
             Login Now
           </Link>
         </p>

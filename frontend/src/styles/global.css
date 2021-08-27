@@ -32,3 +32,17 @@
 	   transform: translateX(110%);		
 	}
 }
+
+.logo-icon{
+	width: 100px;
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.font-weight-text{
+	font-weight: 400;
+}
+
+
+

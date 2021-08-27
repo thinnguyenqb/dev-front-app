@@ -1,4 +1,5 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import Logo from '../images/logo-icon.png'
 import { Link } from "react-router-dom";
 import { login } from '../redux/actions/authAction'
 import { useDispatch } from "react-redux";
@@ -17,6 +18,11 @@ const Login = () => {
   const dispatch = useDispatch()
   //const history = useHistory()
 
+  const Image = props => {
+    const { alt, ...otherProps } = props;
+    return ( <img alt={alt} {...otherProps} />);
+  }
+
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -31,9 +37,11 @@ const Login = () => {
   return (
     <div className="auth_page">
       <form className="login_form" onSubmit={handleSubmit}>
-        <h3 className="text-uppercase text-center mb-4">Login</h3>
+        <Image alt="Logo" src={Logo} className="logo-icon show"/>
+        <h3 className="text-center mb-4">Welcome back.</h3>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+          <i className="fas fa-envelope text-muted mr-2"/>
+          <label htmlFor="exampleInputEmail1" className="font-weight-text text-muted">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -42,13 +50,12 @@ const Login = () => {
             aria-describedby="emailHelp"
             onChange={handleChangeInput}
             value={email}
+            placeholder="user@gmail.com"
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
+          <i className="fas fa-lock text-muted mr-2"/>
+          <label htmlFor="exampleInputPassword1" className="font-weight-text text-muted">Password</label>
           <div className="pass">
             <input
               type={typePass? "text":"password"}
@@ -57,6 +64,7 @@ const Login = () => {
               onChange={handleChangeInput}
               value={password}
               name="password"
+              placeholder="******"
             />
             <small onClick={() => setTypePass(!typePass)}>
               {typePass ? <i className="far fa-eye-slash"/> : <i className="far fa-eye"/>}
@@ -68,11 +76,11 @@ const Login = () => {
           className="btn btn-dark w-100 btn-grad"
           disabled={email && password ? false : true}
         >
-          Login
+          Log in to your account
         </button>
-        <p className="my-2" style={{display: "flex", justifyContent:"center"}}>
-          You don't have an account? {' '}
-          <Link to="/register" style={{ color: "crimson" }}>
+        <p className="my-2 font-weight-text text-muted" style={{display: "flex", justifyContent:"center"}}>
+          Just getting started? &nbsp;
+          <Link to="/register" style={{ color: "#512bdc", fontWeight: "500" }}>
             Register Now
           </Link>
         </p>

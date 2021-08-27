@@ -2,7 +2,7 @@ import React from 'react'
 import Info from '../../components/profile/Info'
 import Posts from '../../components/profile/Posts'
 import { useSelector } from 'react-redux'
-import LoadIcon from '../../images/loading5.1.gif'
+import LoadIcon from '../../images/loading1.gif'
 
 const Profile = () => {
   const { profile } = useSelector(state => state)
