@@ -56,9 +56,9 @@ export const likeComment = ({comment, post, auth }) => async (dispatch) => {
 }
 
 export const unLikeComment = ({comment, post, auth }) => async (dispatch) => {
-  console.log(post)
+  //console.log(post)
   const newComment = { ...comment, likes: DeleteData(comment.likes, auth.user._id) }
-  console.log({ comment, newComment })
+  //console.log({ comment, newComment })
 
   const newComments = EditData(post.comments, comment._id, newComment)
 

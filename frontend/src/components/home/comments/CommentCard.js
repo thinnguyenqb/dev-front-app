@@ -6,14 +6,16 @@ import LikeButton from '../../LikeButton'
 import { useSelector, useDispatch } from 'react-redux'
 import CommentMenu from './commentMenu';
 import { updateComment, likeComment, unLikeComment } from '../../../redux/actions/commentAction'
+import InputComment from '../InputComment'
 
-const CommentCard = ({ comment, post }) => {
+const CommentCard = ({ children, comment, post, commentId }) => {
   const [content, setContent] = useState('')
   const [readMore, setReadMore] = useState(false)
   
   const [onEdit, setOnEdit] = useState(false)
   const [isLike, setIsLike] = useState(false)
   const [loadLike, setLoadLike] = useState(false)
+  const [onReply, setOnReply] = useState(false)
   
   const { auth, theme } = useSelector(state => state)
   const dispatch = useDispatch()
@@ -23,7 +25,7 @@ const CommentCard = ({ comment, post }) => {
     if (comment.likes.find(like => like._id === auth.user._id)) {
       setIsLike(true)
     }
-  }, [comment])
+  }, [comment, auth.user._id])
 
   const handleLike = async () => {
     if (loadLike) return;
@@ -56,6 +58,11 @@ const CommentCard = ({ comment, post }) => {
       setOnEdit(false)  
     }
   }
+  
+  const handleReply = () => {
+    if (onReply) return setOnReply(false)
+    setOnReply({...comment, commentId })
+  }
 
   return (
     <div className="comment_card mt-2" style={styleCard}>
@@ -78,6 +85,12 @@ const CommentCard = ({ comment, post }) => {
               />
               :
               <div>
+                {
+                  comment.tag && comment.tag._id !== comment.user._id &&
+                  <Link to={`/profile/${comment.tag._id}`}>
+                    @{comment.tag.username} &nbsp; 
+                  </Link>
+                }
                 <span style={{
                   filter: theme ? 'invert(1)' : 'invert(0)',
                   color: theme ? 'white' : 'black'
@@ -101,33 +114,49 @@ const CommentCard = ({ comment, post }) => {
         </div>
         <div className="d-flex align-items-center mr-2" style={{cursor: 'pointer'}}>
           <CommentMenu post={post} comment={comment} auth={auth} setOnEdit={setOnEdit}/>
-          <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} typeLike={false}/>
+          <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} typeLike={false} />
+          <small className="font-weight-bold ml-1">
+          {comment.likes.length}
+          </small>
         </div>
       </div>
       <div style={{cursor: 'pointer'}}>
         <small className="text-muted mr-3">
           {moment(comment.createdAt).fromNow()}
         </small>
-        <small className="font-weight-bold mr-3">
-          {comment.likes.length} likes
-        </small>
+        
         {
           onEdit
             ? <>
               <small className="font-weight-bold mr-3"
               onClick={handleUpdate}>
-                  update
+                  <i className="fas fa-retweet"/> update
                 </small>
               <small className="font-weight-bold mr-3"
               onClick={e => setOnEdit(false)}>
-                  cancel
+                  <i className="fas fa-window-close"/> cancel
                 </small>
             </>
-            : <small className="font-weight-bold mr-3">
-                reply
+            : <small className="font-weight-bold mr-3" onClick={handleReply}>
+              {
+                onReply ? 
+                  <><i className="fas fa-window-close"/> cancel</>
+                 : 
+                  <><i className="fas fa-reply"/> reply</>
+                
+              }  
               </small>
         }
       </div>
+      {
+        onReply &&
+        <InputComment post={post} onReply={onReply} setOnReply={setOnReply}>
+          <Link to={`/profile/${onReply.user._id}`}>
+            @{onReply.user.username}:
+          </Link>
+        </InputComment>
+      }
+      {children}
     </div>
   )
 }
