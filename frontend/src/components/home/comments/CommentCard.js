@@ -113,7 +113,7 @@ const CommentCard = ({ children, comment, post, commentId }) => {
           }
         </div>
         <div className="d-flex align-items-center mr-2" style={{cursor: 'pointer'}}>
-          <CommentMenu post={post} comment={comment} auth={auth} setOnEdit={setOnEdit}/>
+          <CommentMenu post={post} comment={comment} setOnEdit={setOnEdit}/>
           <LikeButton isLike={isLike} handleLike={handleLike} handleUnLike={handleUnLike} typeLike={false} />
           <small className="font-weight-bold ml-1">
           {comment.likes.length}
