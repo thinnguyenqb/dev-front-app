@@ -15,10 +15,10 @@ const Header = () => {
   return (
     <div className="header bg-light" style={{ display:"flex", justifyContent:"center", border: "1px solid rgba(0,0,0,.15)"}}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-        <Link to="/" className="logo">
-          <div className="navbar-brand p-0 m-0"
+        <Link to="/" className="logo" >
+          <div className="navbar-brand p-0 m-0" style={{filter: theme ? 'invert(1)' : 'invert(0)' }}
           onClick={() => window.scrollTo({top: 0})}>
-            <Image alt="Logo" src={imageName} style={{ width: "50px", filter: theme ? 'invert(1)' : 'invert(0)' }} />
+            <Image alt="Logo" src={imageName} style={{ width: "50px"}} />
             <span style={{ fontWeight: "500", color: "#914cff"}}>KimQuy</span>
           </div>
         </Link>
