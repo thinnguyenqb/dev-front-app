@@ -48,7 +48,7 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  updatePosts: async (req, res) => {
+  updatePost: async (req, res) => {
     try {
       const { content, images } = req.body;
 
@@ -132,6 +132,22 @@ const postCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  getPost: async (req, res) => {
+    try {
+      const post = await Posts.findById(req.params.id)
+        .populate("user likes", "avatar username fullname")
+        .populate({
+          path: "comments",
+          populate: {
+            path: "user likes",
+            select: "-password"
+          }
+        })
+      res.json({ post });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  }
 };
 
 module.exports = postCtrl;

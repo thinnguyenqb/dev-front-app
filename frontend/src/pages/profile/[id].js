@@ -14,9 +14,9 @@ const Profile = () => {
   
   useEffect(() => {
     if (profile.ids.every(item => item !== id)) {
-      dispatch(getProfileUsers({users: profile.users, id, auth}))
+      dispatch(getProfileUsers({id, auth}))
     }
-  }, [id, profile.users, auth, dispatch])
+  }, [id, auth, dispatch, profile.ids])
 
   return (
     <div className="profile">
@@ -24,7 +24,7 @@ const Profile = () => {
       {
         profile.loading
           ? <img className="d-block mx-auto my-4" src={LoadIcon} alt="loading" />
-          :  <Posts auth={auth} profile={profile} dispatch={dispatch} id={id} />
+          : <Posts auth={auth} profile={profile} dispatch={dispatch} id={id} />
       }
      
     </div>

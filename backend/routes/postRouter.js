@@ -9,7 +9,8 @@ router.route('/posts')
 
 // router use update post
 router.route('/post/:id')
-  .patch(auth, postCtrl.updatePosts)
+  .patch(auth, postCtrl.updatePost)
+  .get(auth, postCtrl.getPost)
   
 router.patch('/post/:id/like', auth, postCtrl.likePost)
 
