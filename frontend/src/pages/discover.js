@@ -35,11 +35,13 @@ const Discover = () => {
       {
         load && <img src={LoadIcon} alt="loading" className="d-block mx-auto"/>
       }
-
-      <LoadMoreBtn
-        result={discover.result} page={discover.page}
-        load={discover.loading} handleLoadMore={handleLoadMore}
-      />
+      {
+        !discover.loading && 
+        <LoadMoreBtn
+          result={discover.result} page={discover.page}
+          load={load} handleLoadMore={handleLoadMore}
+        />
+      }
     </div>
   )
 }
