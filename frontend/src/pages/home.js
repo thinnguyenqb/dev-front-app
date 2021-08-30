@@ -1,6 +1,9 @@
 import React from "react";
+
 import Status from "../components/home/Status";
 import Posts from "../components/home/Posts";
+import LeftSideBar from '../components/home/LeftSideBar'
+
 import { useSelector } from 'react-redux';
 import LoadIcon from '../images/loading1.gif'
 
@@ -8,8 +11,11 @@ function Home() {
   const {homePosts} = useSelector(state => state)
   return (
     <div className="home row mx-0">
-      <div className="col-md-8">
-        <Status />
+      <div className="col-md-3 bg-light">
+        <LeftSideBar />
+      </div>
+      <div className="col-md-6">
+      <Status />
         {
           homePosts.loading
             ? <img src={LoadIcon} alt="loading" className="d-block mx-auto" width="80px"/>
@@ -19,7 +25,8 @@ function Home() {
         }
       </div>
 
-      <div className="col-md-4">
+      <div className="col-md-3 bg-light">
+       
       </div>
     </div>
   );
