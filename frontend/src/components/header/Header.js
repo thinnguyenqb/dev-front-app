@@ -13,17 +13,27 @@ const Image = props => {
 const Header = () => {
   const { theme } = useSelector(state => state)
   return (
-    <div className="header bg-light" style={{ display:"flex", justifyContent:"center", border: "1px solid rgba(0,0,0,.15)"}}>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+    <div className="header bg-white" style={{
+      display: "flex", justifyContent: "center",
+      border: "1px solid rgba(0,0,0,.15)",
+    }}>
+      <nav className="navbar navbar-expand-lg navbar-light" style={{ maxWidth: '1260px'}}>
+      <div className="col-md-3 p-0">
         <Link to="/" className="logo" >
           <div className="navbar-brand p-0 m-0" style={{filter: theme ? 'invert(1)' : 'invert(0)' }}
           onClick={() => window.scrollTo({top: 0})}>
             <Image alt="Logo" src={imageName} style={{ width: "50px"}} />
-            <span style={{ fontWeight: "500", color: "#914cff"}}>KimQuy</span>
+            <span style={{ fontSize: "19px", fontWeight: "600", color: "#200353"}}>Dev-Front</span>
           </div>
         </Link>
+      </div>
+      <div className="col-md-4 px-2">
         <Search />
-        <Menu/>
+      </div>
+      <div className="col-md-5 px-0" style={{display: 'flex', justifyContent: 'flex-end'}}>
+        <Menu />
+      </div>
+        
       </nav>
     </div>
   );

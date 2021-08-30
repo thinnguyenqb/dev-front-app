@@ -25,7 +25,7 @@ function Home() {
         }
       </div>
 
-      <div className="col-md-3 bg-light">
+      <div className="col-md-3 bg-white">
        
       </div>
     </div>

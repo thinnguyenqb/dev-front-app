@@ -35,7 +35,7 @@ const App = () => {
     <Router>
       <Alert/>
       <input type="checkbox" id="theme"/>
-      <div className={`App ${(status || modal) && 'mode'}`}>
+      <div className={`App ${(status || modal) && 'mode'} bg-light`}>
         {auth.token && <Header/>} 
         <div className="main">
           {status && <StatusModal />}
