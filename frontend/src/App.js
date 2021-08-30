@@ -1,17 +1,19 @@
+import React, {useEffect} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PageRender from "./customRouter/PageRender";
 import PrivateRouter from "./customRouter/PrivateRouter";
 
 import Home from './pages/home'
 import Login from './pages/login'
-import Register from './pages/register'
-import React, {useEffect} from "react";
-import { useSelector, useDispatch } from "react-redux"; 
-import {refreshToken} from "./redux/actions/authAction"
 import Alert from './components/alert/Alert'
 import Header from './components/header/Header'
 import StatusModal from "./components/StatusModal";
+import Register from './pages/register'
+
+import { useSelector, useDispatch } from "react-redux"; 
+import {refreshToken} from "./redux/actions/authAction"
 import { getPosts } from "./redux/actions/postAction";
+import { getSuggestions } from "./redux/actions/suggestionsAction";
 
 const App = () => {
   const {auth, status, modal} = useSelector(state => state) // cần lấy ra auth để check
@@ -23,7 +25,10 @@ const App = () => {
   
   //Make sure the post is up to date
   useEffect(() => { 
-    if(auth.token) dispatch(getPosts(auth.token))   
+    if (auth.token) {
+      dispatch(getPosts(auth.token))
+      dispatch(getSuggestions(auth.token))
+    }
   }, [dispatch, auth.token])
 
   return (
