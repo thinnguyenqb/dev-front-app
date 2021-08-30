@@ -1,18 +1,24 @@
 import React from 'react'
 import moment from 'moment'
 import Avatar from '../../Avatar'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
-
+import { deletePost } from '../../../redux/actions/postAction'
 
 const CardHeader = ({ post }) => {
   const { auth } = useSelector(state => state) 
   const dispatch = useDispatch()
+  const history = useHistory()
   
   const handleEditPost = () => {
-    console.log(post)
+    //console.log(post)
     dispatch({ type: GLOBALTYPES.STATUS, payload: {...post, onEdit: true}})
+  }
+
+  const handleDeletePost = () => {
+    dispatch(deletePost({ post, auth }))
+    return history.push("/")
   }
   
   return (
@@ -43,7 +49,7 @@ const CardHeader = ({ post }) => {
               <div className="dropdown-item" onClick={handleEditPost}>
                 <span className="material-icons-outlined">edit</span>Edit Post
               </div>
-              <div className="dropdown-item">
+              <div className="dropdown-item" onClick={handleDeletePost}>
                 <span className="material-icons-outlined">delete_outline</span>Delete Post
               </div>
             </>
