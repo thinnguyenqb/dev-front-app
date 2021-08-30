@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
 import { deletePost } from '../../../redux/actions/postAction'
+import { BASE_URL } from '../../../utils/config' 
 
 const CardHeader = ({ post }) => {
   const { auth } = useSelector(state => state) 
@@ -19,6 +20,10 @@ const CardHeader = ({ post }) => {
   const handleDeletePost = () => {
     dispatch(deletePost({ post, auth }))
     return history.push("/")
+  }
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(`${BASE_URL}/post/${post._id}`)
   }
   
   return (
@@ -54,8 +59,8 @@ const CardHeader = ({ post }) => {
               </div>
             </>
           }
-          <div className="dropdown-item">
-            <span className="material-icons-round">content_copy</span>Share Post
+          <div className="dropdown-item" onClick={handleCopyLink}>
+            <span className="material-icons-round">link</span>Share Post
           </div>
           
         </div>
