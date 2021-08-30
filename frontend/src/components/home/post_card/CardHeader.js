@@ -18,8 +18,10 @@ const CardHeader = ({ post }) => {
   }
 
   const handleDeletePost = () => {
-    dispatch(deletePost({ post, auth }))
-    return history.push("/")
+    if (window.confirm("Are you sure want to delete this post?")) {
+      dispatch(deletePost({ post, auth }))
+      return history.push("/") 
+    }
   }
 
   const handleCopyLink = () => {
