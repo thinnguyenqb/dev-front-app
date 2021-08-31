@@ -19,7 +19,7 @@ function Home() {
         {
           homePosts.loading
             ? <img src={LoadIcon} alt="loading" className="d-block mx-auto" width="80px"/>
-            : homePosts.result === 0
+            : (homePosts.result === 0 && homePosts.posts.length === 0)
               ? <h2 className="text-center">No Post</h2>
               : < Posts />
         }
