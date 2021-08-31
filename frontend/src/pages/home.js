@@ -2,7 +2,7 @@ import React from "react";
 
 import Status from "../components/home/Status";
 import Posts from "../components/home/Posts";
-import LeftSideBar from '../components/home/LeftSideBar'
+import LeftSideBar from '../components/home/left_side_bar/LeftSideBar'
 
 import { useSelector } from 'react-redux';
 import LoadIcon from '../images/loading1.gif'

@@ -4,7 +4,7 @@ const Toast = ({ msg, handleShow, bgColor }) => {
   return (
     <div
       className={`alert-box hidden toast show position-fixed text-light ${bgColor}`}
-      style={{ top: "5px", right: "5px", minWidth: "300px", zIndex: 50 }}
+      style={{ top: "70px", right: "5px", minWidth: "300px", zIndex: 50 }}
     >
       <div className={`toast-header text-light ${bgColor}`}>
 
@@ -18,7 +18,7 @@ const Toast = ({ msg, handleShow, bgColor }) => {
         <button
           className="ml-2 mb-1 close text-light"
           data-dismiss="toast"
-          style={{ outline: "none" }}
+          style={{ outline: "none", fontSize: '2rem' }}
           onClick={handleShow}
         >
           &times;
