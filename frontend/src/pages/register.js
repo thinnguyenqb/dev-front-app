@@ -42,7 +42,7 @@ const Register = () => {
     dispatch(register(userData));
   };
   return (
-    <div className="auth_page">
+    <div className="auth_page bg-light">
       <form className="login_form" onSubmit={handleSubmit}>
       <Image alt="Logo" src={Logo} className="logo-icon show"/>
         <h3 className="text-center mb-4">Create Account</h3>

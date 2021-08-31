@@ -35,8 +35,8 @@ const Login = () => {
   }
 
   return (
-    <div className="auth_page">
-      <form className="login_form" onSubmit={handleSubmit}>
+    <div className="auth_page bg-light">
+      <form className="login_form py-4 " onSubmit={handleSubmit}>
         <Image alt="Logo" src={Logo} className="logo-icon show"/>
         <h3 className="text-center mb-4">Welcome back.</h3>
         <div className="form-group">
@@ -73,12 +73,12 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="btn btn-dark w-100 btn-grad"
+          className="btn btn-dark w-100 btn-grad mt-4 "
           disabled={email && password ? false : true}
         >
           Log in to your account
         </button>
-        <p className="my-2 font-weight-text text-muted" style={{display: "flex", justifyContent:"center"}}>
+        <p className="mt-4 font-weight-text text-muted" style={{display: "flex", justifyContent:"center"}}>
           Just getting started? &nbsp;
           <Link to="/register" style={{ color: "#512bdc", fontWeight: "500" }}>
             Register Now
