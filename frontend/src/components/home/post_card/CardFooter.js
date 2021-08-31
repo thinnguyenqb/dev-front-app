@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import LikeButton from '../../LikeButton'
 import { useSelector, useDispatch } from 'react-redux'
-import { likePost } from '../../../redux/actions/postAction'
-import { unLikePost } from '../../../redux/actions/postAction'
+import { likePost, unLikePost, savePost, unSavePost } from '../../../redux/actions/postAction'
 import ShareModal from '../../ShareModal'
 import { BASE_URL } from '../../../utils/config'
 
@@ -15,6 +14,8 @@ const CardFooter = ({ post }) => {
 
   const { auth, theme } = useSelector(state => state)
   const dispatch = useDispatch()
+
+  const [saved, setSaved] = useState(false)
 
   useEffect(() => {
     if (post.likes.find(like => like._id === auth.user._id)) {
@@ -38,6 +39,14 @@ const CardFooter = ({ post }) => {
     setLoadLike(false)
   }
 
+  useEffect(() => {
+    if (auth.user.saved.find(id => id === post._id)) {
+      setSaved(true)
+    } else {
+      setSaved(false)
+    } 
+  }, [auth.user.saved, post._id])
+
   return (
     <div className="card_footer">
       <div className="card_icon_menu">
@@ -54,7 +63,16 @@ const CardFooter = ({ post }) => {
           
           <i className="far fa-paper-plane" onClick={() => setIsShare(!isShare)}></i>
         </div>
-        <i className="far fa-bookmark bookmark" style={{ padding: '10px 12px' }}/>
+        {
+          saved
+            ? <i className="fas fa-bookmark bookmarktext-info" style={{ padding: '10px 12px' }}
+              onClick={() => dispatch(unSavePost({ post, auth }))}
+            />
+            : <i className="far fa-bookmark bookmark" style={{ padding: '10px 12px' }}
+              onClick={() => dispatch(savePost({ post, auth }))}
+            />
+        }
+        
       </div>
       <div className="d-flex justify-content-between">
         <h6 style={{padding: '0 25px', cursor: 'pointer'}}>
