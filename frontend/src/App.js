@@ -15,12 +15,20 @@ import {refreshToken} from "./redux/actions/authAction"
 import { getPosts } from "./redux/actions/postAction";
 import { getSuggestions } from "./redux/actions/suggestionsAction";
 
+import io from "socket.io-client"
+import { GLOBALTYPES } from './redux/actions/globalTypes';
+import SocketClient from "./socketClient";
+
 const App = () => {
   const {auth, status, modal} = useSelector(state => state) // cần lấy ra auth để check
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(refreshToken())
+
+    const socket = io()
+    dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
+    return () => socket.close()
   }, [dispatch])
   
   //Make sure the post is up to date
@@ -39,6 +47,7 @@ const App = () => {
         {auth.token && <Header/>} 
         <div className="main">
           {status && <StatusModal />}
+          {auth.token && <SocketClient/>}
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />
           
