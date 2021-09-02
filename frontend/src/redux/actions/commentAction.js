@@ -79,7 +79,7 @@ export const unLikeComment = ({comment, post, auth }) => async (dispatch) => {
   }
 }
 
-export const deleteComment = ({ comment, post, auth }) => async (dispatch) => {
+export const deleteComment = ({ comment, post, auth, socket }) => async (dispatch) => {
   //console.log({post, comment, auth})
   const deleteCm = [...post.comments.filter(cm => cm.reply === comment._id), comment]
   //console.log(deleteCm)
@@ -91,6 +91,8 @@ export const deleteComment = ({ comment, post, auth }) => async (dispatch) => {
   //console.log({newPost, post})
   
   dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+  
+  socket.emit('deleteComment', newPost)
   try {
     deleteCm.forEach(item => {
       deleteDataAPI(`comment/${item._id}`, auth.token)

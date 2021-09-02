@@ -21,7 +21,6 @@ const SocketClient = () => {
     return () => socket.off('likeToClient')
   }, [socket, dispatch])
 
-  //UnLikes
   useEffect(() => {
     socket.on('unLikeToClient', newPost => {
       //console.log(newPost)
@@ -39,6 +38,15 @@ const SocketClient = () => {
     })
 
     return () => socket.off('createCommentToClient')
+  }, [socket, dispatch])
+  
+  useEffect(() => {
+    socket.on('deleteCommentToClient', newPost => {
+      //console.log(newPost)
+      dispatch({type: POST_TYPES.UPDATE_POST, payload: newPost})
+    })
+
+    return () => socket.off('deleteCommentToClient')
   }, [socket, dispatch])
 
   return <> </>

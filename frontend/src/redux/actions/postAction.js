@@ -96,9 +96,9 @@ export const likePost = ({ post, auth, socket }) => async (dispatch) => {
   //console.log(newPost)
   dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
   
+  socket.emit('likePost', newPost)
   try {
     await patchDataAPI(`post/${post._id}/like`, null, auth.token)
-    socket.emit('likePost', newPost)
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
@@ -112,10 +112,10 @@ export const unLikePost = ({ post, auth, socket}) => async (dispatch) => {
   const newPost = { ...post, likes: post.likes.filter(like => like._id !== auth.user._id) }
   //console.log(newPost)
   dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
-
+  
+  socket.emit('unLikePost', newPost)
   try {
     await patchDataAPI(`post/${post._id}/unlike`, null, auth.token)
-    socket.emit('unLikePost', newPost)
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
