@@ -153,27 +153,39 @@
   cursor: pointer;
 }
 
+
 /* --------- Save Tab ----------- */
+
 .profile_tab{
   width: 100%;
   display: flex;
   justify-content: center;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  margin-top: 10px;
 }
+
 .profile_tab button{
   outline: none;
   border: none;
-  background: white;
-  text-transform: uppercase;
+  color: white;
+  background: #8E2DE2;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  
+  background: linear-gradient(to right, #4A00E0, #8E2DE2); 
+  filter: none;
   font-weight: bold;
-  font-size: 1.2rem;
-  padding: 5px 20px;
-  margin: 0 25px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 0 15px;
   opacity: 0.5;
+  border-radius: 5px;
 }
+
 .profile_tab button.active{
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  opacity: 0.8;
+  opacity: 1;
+}
+
+.profile-body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 }

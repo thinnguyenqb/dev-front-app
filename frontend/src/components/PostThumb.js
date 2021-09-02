@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
+import { AiFillHeart, AiOutlineComment } from "react-icons/ai";
+
 
 const PostThumb = ({ posts, result }) => {
   const { theme } = useSelector(state => state)
@@ -18,8 +20,14 @@ const PostThumb = ({ posts, result }) => {
               />
 
               <div className="post_thumb_menu">
-                <i className="far fa-heart">{post.likes.length}</i>
-                <i className="far fa-comment">{post.comments.length}</i>
+                <div className="pt_menu_item">
+                  <AiFillHeart size="1.5rem" color="red"/>
+                  <span>{post.likes.length}</span>
+                </div>
+                <div className="pt_menu_item">
+                  <AiOutlineComment size="1.5rem" color="deepskyblue" />
+                  <span>{post.comments.length}</span>
+                </div>
               </div>
             </div>
           </Link>
