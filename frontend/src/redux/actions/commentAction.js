@@ -2,7 +2,7 @@ import { GLOBALTYPES, EditData, DeleteData } from "./globalTypes";
 import { POST_TYPES } from './postAction';
 import { postDataAPI, patchDataAPI, deleteDataAPI } from '../../utils/fetchData';
 
-export const createComment = ({ post, newComment, auth }) => async (dispatch) => {
+export const createComment = ({ post, newComment, auth, socket }) => async (dispatch) => {
   //console.log({post, newComment, auth})
   const newPost = { ...post, comments: [...post.comments, newComment] }
   //console.log({post, newPost})
@@ -16,6 +16,9 @@ export const createComment = ({ post, newComment, auth }) => async (dispatch) =>
     const newData = { ...res.data.newComment, user: auth.user }
     const newPost = { ...post, comments: [...post.comments, newData] }
     dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+
+    //Socket
+    socket.emit('createComment', newPost)
     
   } catch (err) {
     dispatch({ type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg} })
