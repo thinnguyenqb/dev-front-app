@@ -16,7 +16,8 @@ const CardFooter = ({ post }) => {
   const dispatch = useDispatch()
 
   const [saved, setSaved] = useState(false)
-
+  const [saveLoad, setSaveLoad] = useState(false)
+  // Like
   useEffect(() => {
     if (post.likes.find(like => like._id === auth.user._id)) {
       setIsLike(true)
@@ -39,6 +40,7 @@ const CardFooter = ({ post }) => {
     setLoadLike(false)
   }
 
+  // Save
   useEffect(() => {
     if (auth.user.saved.find(id => id === post._id)) {
       setSaved(true)
@@ -46,6 +48,20 @@ const CardFooter = ({ post }) => {
       setSaved(false)
     } 
   }, [auth.user.saved, post._id])
+
+  const handleSavePost = async () => {
+    if (saveLoad) return;
+    setSaveLoad(true)
+    await dispatch(savePost({ post, auth }))
+    setSaveLoad(false)
+  }
+
+  const handleUnSavePost = async () => {
+    if (saveLoad) return;
+    setSaveLoad(true)
+    await dispatch(unSavePost({ post, auth }))
+    setSaveLoad(false)
+  }
 
   return (
     <div className="card_footer">
@@ -65,11 +81,11 @@ const CardFooter = ({ post }) => {
         </div>
         {
           saved
-            ? <i className="fas fa-bookmark bookmarktext-info" style={{ padding: '10px 12px' }}
-              onClick={() => dispatch(unSavePost({ post, auth }))}
+            ? <i className="fas fa-bookmark bookmark" style={{ padding: '10px 12px' }}
+              onClick={handleUnSavePost}
             />
             : <i className="far fa-bookmark bookmark" style={{ padding: '10px 12px' }}
-              onClick={() => dispatch(savePost({ post, auth }))}
+              onClick={handleSavePost}
             />
         }
         

@@ -119,6 +119,7 @@
 /*------------- Responsive -------------*/
 
 @media (max-width: 768px) {
+  
   .header .menu{
     position: fixed;
     top: calc(100vh - 50px);
@@ -148,13 +149,8 @@
     width: 100%;
   }
 
-  .header .logo{
-    margin: auto;
-    font-size: 1rem;
+  .header .navbar .logo{
+    display: flex;
+    justify-content: center;
   }
-
-  .header .logo h1{
-    font-size: 1.5rem;
-  }
-  
 }

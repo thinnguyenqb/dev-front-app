@@ -42,8 +42,10 @@ const App = () => {
           <Route exact path="/" component={auth.token ? Home : Login} />
           <Route exact path="/register" component={Register} />
           
-          <PrivateRouter exact path="/:page" component={PageRender} />
-          <PrivateRouter exact path="/:page/:id" component={PageRender} />
+          <div className="wrap_page">
+            <PrivateRouter exact path="/:page" component={PageRender} />
+            <PrivateRouter exact path="/:page/:id" component={PageRender} />
+          </div>
         </div>
       </div>
     </Router>

@@ -19,9 +19,10 @@ const Saved = ({auth, dispatch}) => {
         setResult(res.data.result)
         setLoad(false)
       })
-      .catch(
-        err => { dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } }) }
-      )
+      .catch(err => {
+        dispatch({type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg }})
+      })
+    return () => setSavePosts([])
   }, [auth.token, dispatch])
 
   const handleLoadMore = async () => {
@@ -36,9 +37,8 @@ const Saved = ({auth, dispatch}) => {
     <div>
       <PostThumb posts={savePosts} result={result} />
       
-      
       {
-        load && <img src={LoadIcon} alt="loading" className="d-block mx-auto"/>
+        load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" style={{ width:'100px'}}/>
       }
       
       <LoadMoreBtn
