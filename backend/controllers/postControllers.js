@@ -33,8 +33,9 @@ const postCtrl = {
       await newPost.save();
 
       res.json({
+        msg: 'Created Post!',
         newPost: {
-          ...newPost._doc,
+          ...newPost._doc,  
           user: req.user,
         },
       });
