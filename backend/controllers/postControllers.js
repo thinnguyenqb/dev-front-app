@@ -192,7 +192,14 @@ const postCtrl = {
     try {
       const post = await Posts.findOneAndDelete({ _id: req.params.id, user: req.user._id })
       await Comments.deleteMany({ _id: { $in: post.comments } })
-      res.json({msg: 'Deleted Post!'})
+      
+      res.json({
+        msg: 'Deleted Post!',
+        newPost: {
+          ...post,
+          user: req.user
+        }
+      })
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

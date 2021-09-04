@@ -17,6 +17,16 @@ const notifyCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  deleteNotify: async (req, res) => {
+    try {
+      const notify = await Notifies.findOneAndDelete({
+        id: req.params.id, url: req.query.url
+      })
+      return res.json({ notify });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = notifyCtrl;

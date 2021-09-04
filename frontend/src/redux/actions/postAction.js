@@ -1,7 +1,7 @@
 import { GLOBALTYPES } from "./globalTypes";
 import { imageUpload } from "../../utils/imageUpload"
 import { postDataAPI, getDataAPI, patchDataAPI, deleteDataAPI } from "../../utils/fetchData";
-import { createNotify } from "./notifyAction";
+import { createNotify, deleteNotify } from "./notifyAction";
 
 export const POST_TYPES = {
   CREATE_POST: 'CREATE_POST',
@@ -155,11 +155,22 @@ export const getPost = ({ detailPost, id, auth }) => async (dispatch) => {
   }
 }
 
-export const deletePost = ({ post, auth }) => async (dispatch) => {
+export const deletePost = ({ post, auth, socket }) => async (dispatch) => {
   //console.log({ post, auth })
   dispatch({ type: POST_TYPES.DELETE_POST, payload: post })
   try {
-    await deleteDataAPI(`post/${post._id}`, auth.token)
+    const res = await deleteDataAPI(`post/${post._id}`, auth.token)
+
+    //Notify
+    const msg = {
+      id: post._id,
+      text: 'deleted a post.',
+      recipients: res.data.newPost.user.followers,
+      url: `/post/${post._id}`,
+    }
+
+    dispatch(deleteNotify({msg, auth, socket}))
+
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
