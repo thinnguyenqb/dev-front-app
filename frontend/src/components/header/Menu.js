@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from '../../redux/actions/authAction';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import Avatar from "../Avatar";
+import NotifyModal from '../NotifyModal'
 
 
 const Menu = () => {
@@ -11,10 +12,10 @@ const Menu = () => {
     { label: "Home", icon: "cottage", path: "/"},
     { label: "Message", icon: "near_me", path: "/message" },
     { label: "Discover", icon: "explore", path: "/discover" },
-    { label: "Notify", icon: "favorite_border", path: "/notify" },
+    // { label: "Notify", icon: "favorite_border", path: "/notify" },
   ];
 
-  const {auth, theme} = useSelector(state => state)
+  const {auth, theme, notify} = useSelector(state => state)
   const dispatch = useDispatch()
   const {pathname} = useLocation() //hook get pathname current
 
@@ -35,6 +36,18 @@ const Menu = () => {
             </Link>
           </li>
         ))}
+        <li className="nav-item dropdown">
+          <span className="nav-link" id="navbarDropdown"
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span className="notify-menu material-icons-outlined">
+              notifications
+            </span>
+            <span className="notify-menu-label">{notify.data.length}</span>
+          </span>
+          <div className="dropdown-menu" aria-labelledby="navbarDrowdown" style={{transform:'translateX(40px)'}}>
+            <NotifyModal />
+          </div>
+        </li>
         <li className="nav-item dropdown">
           <span
             className="nav-link dropdown-toggle"
