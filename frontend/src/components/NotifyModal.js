@@ -68,9 +68,9 @@ const NotifyModal = () => {
                 {moment(msg.createdAt).fromNow()}
                 {
                   !msg.isRead ?
-                    <span>Đã xem</span>
-                  :
                     <span>Chưa xem</span>
+                  :
+                    <span>Đã xem</span>
                 }
 
               </small>

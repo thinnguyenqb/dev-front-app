@@ -22,20 +22,6 @@
   border-radius: 50px;
 }
 
-.notify-menu{
-  position: relative;
-}
-
-.notify-menu-label{
-  position: absolute;
-  background-color: blueviolet;
-  padding: 0px 6px;
-  border-radius: 50px;
-  top: 2px;
-  right: 2px;
-  font-weight: 600;
-  color: white;
-}
 .notify-filter{
   display: flex;
   align-items: center;

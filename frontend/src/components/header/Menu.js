@@ -39,7 +39,7 @@ const Menu = () => {
         <li className="nav-item dropdown">
           <span className="nav-link" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="notify-menu material-icons-outlined">
+            <span className="notify-menu material-icons-outlined mr-2">
               notifications
             </span>
             <span className="notify-menu-label">{notify.data.length}</span>
@@ -50,7 +50,7 @@ const Menu = () => {
         </li>
         <li className="nav-item dropdown">
           <span
-            className="nav-link dropdown-toggle"
+            className="nav-link"
             href="http://localhost:3000/"
             id="navbarDropdown"
             role="button"
