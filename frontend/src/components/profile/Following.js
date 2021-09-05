@@ -8,7 +8,7 @@ const Following = ({ users, setShowFollowing }) => {
   return (
     <div className="follow">
       <div className="follow_box">
-        <h5>Followers</h5>
+        <h5>Following</h5>
         <hr />
         <div className="follow_content">
           {

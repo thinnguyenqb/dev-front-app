@@ -64,7 +64,7 @@ const NotifyModal = () => {
                     {msg.image && <Avatar src={msg.image} size='medium-avatar'/>}
                 </div>
               </Link>
-              <small className="notify-items-time">
+              <small className="notify-items-time text-muted">
                 {moment(msg.createdAt).fromNow()}
                 {
                   !msg.isRead ?
