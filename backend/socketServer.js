@@ -81,6 +81,17 @@ const SocketServer = (socket) => {
       })
     }
   })
+
+  socket.on('deleteNotify', msg => {
+    //console.log(msg)
+    const clients = users.filter(user => msg.recipients.includes(user.id))
+    
+    if (clients.length > 0) {
+      clients.forEach(client => {
+        socket.to(`${client.socketId}`).emit('deleteNotifyToClient', msg)
+      })
+    }
+  })
 }
 
 module.exports = SocketServer

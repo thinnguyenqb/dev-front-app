@@ -73,6 +73,13 @@ const SocketClient = () => {
     })
     return () => socket.off('createNotifyToClient')
   }, [socket, dispatch, auth])
+
+  useEffect(() => {
+    socket.on('deleteNotifyToClient', msg => {
+      dispatch({type: NOTIFY_TYPES.DELETE_NOTIFY, payload: msg})
+    })
+    return () => socket.off('deleteNotifyToClient')
+  }, [socket, dispatch, auth])
   
 
   return <> </>

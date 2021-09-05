@@ -3,7 +3,8 @@ import { getDataAPI, postDataAPI, deleteDataAPI } from "../../utils/fetchData"
 
 export const NOTIFY_TYPES = {
   GET_NOTIFIES: 'GET_NOTIFIES',
-  CREATE_NOTIFY: 'CREATE_NOTIFY'
+  CREATE_NOTIFY: 'CREATE_NOTIFY',
+  DELETE_NOTIFY: 'DELETE_NOTIFY',
 }
 
 export const createNotify = ({ msg, auth, socket }) => async (dispatch) => {
@@ -27,8 +28,9 @@ export const createNotify = ({ msg, auth, socket }) => async (dispatch) => {
 export const deleteNotify = ({ msg, auth, socket }) => async (dispatch) => {
   try {
     const res = await deleteDataAPI(`notify/${msg.id}?url=${msg.url}`, auth.token)
-    console.log(res)
-    
+    //console.log(res)
+
+    socket.emit('deleteNotify', msg)
   } catch (err) {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { error: err.response.data.msg } })
   }
