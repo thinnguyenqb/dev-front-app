@@ -4,7 +4,7 @@ import { RiMessage3Line, RiDeleteBin4Line, RiVolumeUpLine, RiVolumeMuteLine } fr
 import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
 import moment from 'moment';
-import { isReadNotify } from '../redux/actions/notifyAction';
+import { isReadNotify, NOTIFY_TYPES } from '../redux/actions/notifyAction';
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector(state => state)
@@ -12,6 +12,10 @@ const NotifyModal = () => {
 
   const handleIsRead = (msg) => {
     dispatch(isReadNotify({msg, auth}))
+  }
+
+  const handleSound = () => {
+    dispatch({type: NOTIFY_TYPES.UPDATE_SOUND, payload: !notify.sound})
   }
 
   return (
@@ -24,7 +28,8 @@ const NotifyModal = () => {
               <RiDeleteBin4Line size='1.5rem'/>
             </div>
           }
-          <div className="notify-feature-item ml-3">
+          <div className="notify-feature-item ml-3"
+          onClick={handleSound}>
             {
             notify.sound
               ? <RiVolumeUpLine size='1.5rem'/>

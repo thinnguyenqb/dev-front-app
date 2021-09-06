@@ -35,6 +35,12 @@ const notifyReducer = (state = initialState, action) => {
         data: EditData(state.data, action.payload._id, action.payload)
       }
   
+    case NOTIFY_TYPES.UPDATE_SOUND:
+      return {
+        ...state,
+        sound: action.payload
+      }
+  
     default:
       return state;
   }

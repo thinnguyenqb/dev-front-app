@@ -5,7 +5,8 @@ export const NOTIFY_TYPES = {
   GET_NOTIFIES: 'GET_NOTIFIES',
   CREATE_NOTIFY: 'CREATE_NOTIFY',
   DELETE_NOTIFY: 'DELETE_NOTIFY',
-  UPDATE_NOTIFY: 'UPDATE_NOTIFY'
+  UPDATE_NOTIFY: 'UPDATE_NOTIFY',
+  UPDATE_SOUND: 'UPDATE_SOUND'
 }
 
 export const createNotify = ({ msg, auth, socket }) => async (dispatch) => {
