@@ -4,10 +4,15 @@ import { RiMessage3Line, RiDeleteBin4Line, RiVolumeUpLine, RiVolumeMuteLine } fr
 import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
 import moment from 'moment';
+import { isReadNotify } from '../redux/actions/notifyAction';
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector(state => state)
   const dispatch = useDispatch()
+
+  const handleIsRead = (msg) => {
+    dispatch(isReadNotify({msg, auth}))
+  }
 
   return (
     <div style={{ minWidth: '330px'}}>
@@ -50,7 +55,8 @@ const NotifyModal = () => {
         {
           notify.data.map((msg, index) => (
             <div key={index} className="px-2 mb-3">
-              <Link to={`${msg.url}`} className="d-flex text-dark align-items-center">
+              <Link to={`${msg.url}`} className="d-flex text-dark align-items-center"
+              onClick={() => handleIsRead(msg)}>
                 <Avatar src={msg.user.avatar} size="medium-avatar"/>
 
                 <div className="mx-2 flex-fill">
