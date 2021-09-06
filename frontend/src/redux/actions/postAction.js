@@ -187,7 +187,7 @@ export const deletePost = ({ post, auth, socket }) => async (dispatch) => {
     //Notify
     const msg = {
       id: post._id,
-      text: 'deleted a post.',
+      text: 'added a new post.',
       recipients: res.data.newPost.user.followers,
       url: `/post/${post._id}`,
     }

@@ -92,20 +92,18 @@ const commentCtrl = {
       const comment = await Comments.findOneAndDelete({
         _id: req.params.id,
         $or: [
-          { user: req.user._id },
-          { postUserId: req.user._id}
+          {user: req.user._id},
+          {postUserId: req.user._id}
         ]
       })
-      //console.log(comment)
-      await Posts.findOneAndUpdate({ _id: comment.postId }, {
+      await Posts.findOneAndUpdate({_id: comment.postId}, {
         $pull: {comments: req.params.id}
       })
-      res.json({ msg: 'Delete Comment!' })
-      
+      res.json({msg: 'Deleted Comment!'})
     } catch (err) {
       return res.status(500).json({msg: err.message})
     }
-  }
+  },
 }
   
 

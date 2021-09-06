@@ -10,18 +10,6 @@ const SocketServer = (socket) => {
   })
   
   //Like
-  socket.on('unLikePost', newPost => {
-    //console.log(newPost)
-    const ids = [...newPost.user.followers, newPost.user._id]
-    const clients = users.filter(user => ids.includes(user.id))
-    //console.log(client)
-    if (clients.length > 0) {
-      clients.forEach(client => {
-        socket.to(`${client.socketId}`).emit('unLikeToClient', newPost)
-      })
-    }
-  })
-
   socket.on('likePost', newPost => {
     //console.log(newPost)
     const ids = [...newPost.user.followers, newPost.user._id]
@@ -30,6 +18,18 @@ const SocketServer = (socket) => {
     if (clients.length > 0) {
       clients.forEach(client => {
         socket.to(`${client.socketId}`).emit('likeToClient', newPost)
+      })
+    }
+  })
+
+  socket.on('unLikePost', newPost => {
+    //console.log(newPost)
+    const ids = [...newPost.user.followers, newPost.user._id]
+    const clients = users.filter(user => ids.includes(user.id))
+    //console.log(client)
+    if (clients.length > 0) {
+      clients.forEach(client => {
+        socket.to(`${client.socketId}`).emit('unLikeToClient', newPost)
       })
     }
   })
@@ -72,25 +72,13 @@ const SocketServer = (socket) => {
 
   //Notification
   socket.on('createNotify', msg => {
-    //console.log(msg)
-    const clients = users.filter(user => msg.recipients.includes(user.id))
-    
-    if (clients.length > 0) {
-      clients.forEach(client => {
-        socket.to(`${client.socketId}`).emit('createNotifyToClient', msg)
-      })
-    }
+    const client = users.find(user => msg.recipients.includes(user.id))
+    client && socket.to(`${client.socketId}`).emit('createNotifyToClient', msg)
   })
 
   socket.on('deleteNotify', msg => {
-    //console.log(msg)
-    const clients = users.filter(user => msg.recipients.includes(user.id))
-    
-    if (clients.length > 0) {
-      clients.forEach(client => {
-        socket.to(`${client.socketId}`).emit('deleteNotifyToClient', msg)
-      })
-    }
+    const client = users.find(user => msg.recipients.includes(user.id))
+    client && socket.to(`${client.socketId}`).emit('deleteNotifyToClient', msg)
   })
 }
 
