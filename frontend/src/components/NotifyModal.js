@@ -4,7 +4,7 @@ import { RiMessage3Line, RiDeleteBin4Line, RiVolumeUpLine, RiVolumeMuteLine } fr
 import { Link } from 'react-router-dom';
 import Avatar from './Avatar';
 import moment from 'moment';
-import { isReadNotify, NOTIFY_TYPES } from '../redux/actions/notifyAction';
+import { isReadNotify, NOTIFY_TYPES, deleteAllNotifies } from '../redux/actions/notifyAction';
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector(state => state)
@@ -18,13 +18,22 @@ const NotifyModal = () => {
     dispatch({type: NOTIFY_TYPES.UPDATE_SOUND, payload: !notify.sound})
   }
 
+  const handleDeleteAll = () => {
+    const newArr = notify.data.filter(item => item.isRead === false)
+    if (newArr.length === 0) return dispatch(deleteAllNotifies(auth.token))
+    
+    if (window.confirm(`You have ${newArr.length} unread notifies. Are you sure you want to delete all?`)) {
+      return dispatch(deleteAllNotifies(auth.token))
+    }
+  }
+
   return (
     <div style={{ minWidth: '330px'}}>
       <div className="notify-header px-3 py-2">
         <h4 style={{margin:'auto 0px'}}>Thông báo</h4>
         <div className="notify-header-feature">
           {
-            <div className="notify-feature-item">
+            <div className="notify-feature-item" onClick={handleDeleteAll}>
               <RiDeleteBin4Line size='1.5rem'/>
             </div>
           }

@@ -5,18 +5,18 @@ import { GLOBALTYPES } from './redux/actions/globalTypes';
 import { NOTIFY_TYPES } from './redux/actions/notifyAction';
 import audioMes from './audio/message-sound.mp3'
 
-const spawnNotification = (body, icon, url, title) => {
-  let options = {
-    body, icon
-  }
+// const spawnNotification = (body, icon, url, title) => {
+//   let options = {
+//     body, icon
+//   }
 
-  let n = new Notification(title, options)
+//   let n = new Notification(title, options)
 
-  n.onclick = e => {
-    e.preventDefault()
-    window.open(url, '_blank')
-  }
-}
+//   n.onclick = e => {
+//     e.preventDefault()
+//     window.open(url, '_blank')
+//   }
+// }
 
 const SocketClient = () => {
   const { auth, socket, notify } = useSelector(state => state)
