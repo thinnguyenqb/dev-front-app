@@ -5,6 +5,7 @@ import { getDataAPI } from '../../utils/fetchData';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import { useHistory } from 'react-router-dom';
 import { addUser } from '../../redux/actions/messageAction';
+import { useParams } from 'react-router-dom'
 
 const LeftSide = () => {
   const { auth, message } = useSelector(state => state)
@@ -13,6 +14,7 @@ const LeftSide = () => {
   const [search, setSearch] = useState('')
   const [searchUsers, setSearchUsers] = useState([])
   const history = useHistory()
+  const { id } = useParams()
 
   const handleSearch = async(e) => {
     e.preventDefault()
@@ -35,13 +37,18 @@ const LeftSide = () => {
     return history.push(`/message/${user._id}`)
   }
 
+  const isActive = (user) => {
+    if(id === user._id) return 'active'
+  }
+
   return (
     <>
-      <div className="message_header" onClick={handleSearch}>
+      <form className="message_header-left" onSubmit={handleSearch}>
         <input type="text" value={search} placeholder="Enter to search ..."
           onChange={e => setSearch(e.target.value)} />
-        <button type="submit" id="search">Search</button>
-      </div>
+        
+        <button type="submit" style={{display: 'none'}}>Search</button>
+      </form>
       <div className="message_chat_list">
         {
           searchUsers.length !== 0
@@ -58,12 +65,12 @@ const LeftSide = () => {
             </>
             :
             <>
-              {/* <UserCard user={auth.user}/> */}
               {
                 message.users.map(user => (
-                  <div key={user._id} className="message_user"
+                  <div key={user._id} className={`message_user ${isActive(user)}`}
                   onClick={() => handleAddUser(user)}>
                     <UserCard user={user}/>
+                    <i className="fas fa-circle" />
                   </div>
                 ))
               }

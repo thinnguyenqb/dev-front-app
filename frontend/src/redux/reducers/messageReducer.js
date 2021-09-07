@@ -1,20 +1,22 @@
-import { MESSAGE_TYPES } from "../actions/messageAction";
+import { MESS_TYPES } from "../actions/messageAction";
 
 const initialState = {
   users: [],
   resultUser: 0,
   data: [],
-  resultData: 0,
   firstLoad: false
 }
 
 const messageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case MESSAGE_TYPES.ADD_USER:
-      return {
-        ...state,
-        data: [action.payload, ...state.users]
+    case MESS_TYPES.ADD_USER:
+      if(state.users.every(item => item._id !== action.payload._id)){ //check user isExist in current state ?
+        return {
+          ...state,
+          users: [action.payload, ...state.users]
+        };
       }
+    return state;
     
     default:
       return state;

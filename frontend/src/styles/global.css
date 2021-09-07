@@ -44,5 +44,7 @@
 	font-weight: 400;
 }
 
-
+.message{
+	height: calc(100vh - 150px)
+}
 

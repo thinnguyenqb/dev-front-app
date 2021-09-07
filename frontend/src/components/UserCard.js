@@ -9,13 +9,13 @@ const UserCard = ({children, user, border, handleClose, setShowFollowers, setSho
     if (setShowFollowing) setShowFollowing(false)
   }
   return (
-    <div className={`d-flex p-2 align-item-center justify-content-between ${border}`}>
+    <div className={`d-flex p-2 align-item-center justify-content-between w-100 ${border}`}>
       <div>
         <Link to={`/profile/${user._id}`} onClick={handleCloseAll} className="d-flex align-item-center">
           <Avatar src={user.avatar} size="big-avatar"/>
           <div className="ml-1" style={{transform: 'translateY(-1px) translateX(6px)'}}>
-            <span className="d-block">{user.username}</span>
-            <small style={{opacity: 0.7}}>{user.fullname}</small>
+            <span className="d-block pt-1" style={{fontWeight: '500', color: "#200353"}}>{user.username}</span>
+            <small style={{opacity: 0.7, fontWeight: '500', color: "#200353"}}>{user.fullname}</small>
           </div>
         </Link>
       </div>
