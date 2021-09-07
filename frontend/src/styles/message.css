@@ -1,0 +1,39 @@
+.message{
+  width: 100%;
+  height: calc(100vh - 100px);
+  border-radius: 10px;
+  background-color: white;
+  border: 1 solid #ddd;
+  margin-top: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.message_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  background-color: #ddd;
+  margin: 30px;
+  border-radius: 5px;
+}
+
+.message_header input{
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: #f8f8f8;
+  padding: 0px 30px;
+}
+
+.message_header #search{
+  display: none;
+}
+
+.message_chat_list{
+  margin-left: 30px;
+}
+
