@@ -5,49 +5,42 @@ import { logout } from '../../redux/actions/authAction';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import Avatar from "../Avatar";
 import NotifyModal from '../NotifyModal'
+import { RiHome5Line, RiCompassDiscoverLine, RiChatSmile2Line, RiNotification4Line } from "react-icons/ri";
 
 
 const Menu = () => {
-  const navLinks = [
-    { label: "Home", icon: "cottage", path: "/"},
-    { label: "Message", icon: "near_me", path: "/message" },
-    { label: "Discover", icon: "explore", path: "/discover" },
-    // { label: "Notify", icon: "favorite_border", path: "/notify" },
-  ];
-
   const {auth, theme, notify} = useSelector(state => state)
   const dispatch = useDispatch()
-  const {pathname} = useLocation() //hook get pathname current
-
-  //handle active page-logo in header
-  const isActive = (pn) => {
-    if(pn === pathname) return 'active'
-  }
 
   return (
     <div className="menu">
       <ul className="navbar-nav flex-row mr-auto">
-        {navLinks.map((link, index) => (
-          <li className={`nav-item px-1 ${isActive(link.path)}`} key={index}>
-            <Link className="nav-link" to={link.path}>
-              <span className="material-icons-outlined d-flex align-items-center">
-                {link.icon}
-              </span>
-            </Link>
-          </li>
-        ))}
-        <li className="nav-item dropdown">
+        <li className="nav-item mr-2">
+          <Link className="nav-link" to="/home">
+            <RiHome5Line size="2rem"/>
+          </Link>
+        </li>
+        <li className="nav-item mr-2">
+          <Link className="nav-link" to="/discover">
+            <RiCompassDiscoverLine size="2rem"/>
+          </Link>
+        </li>
+        <li className="nav-item mr-2">
+          <Link className="nav-link" to="/message">
+            <RiChatSmile2Line size="2rem"/>
+          </Link>
+        </li>
+        <li className="nav-item dropdown mr-2">
           <span className="nav-link" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="notify-menu material-icons-outlined mr-2">
-              notifications
-            </span>
+            <RiNotification4Line size="2rem"/>
             <span className="notify-menu-label">{notify.data.length}</span>
           </span>
           <div className="dropdown-menu" aria-labelledby="navbarDrowdown" style={{transform:'translateX(40px)'}}>
             <NotifyModal />
           </div>
         </li>
+        
         <li className="nav-item dropdown">
           <span
             className="nav-link"
@@ -60,7 +53,7 @@ const Menu = () => {
           >
             <Avatar src={auth.user.avatar} size={"medium-avatar"}/>
           </span>
-          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown" style={{transform:'translateX(50px)'}}>
             <Link className="dropdown-item" to={`/profile/${auth.user._id}`}>
               <i className="fas fa-user pt-1 " style={{marginRight: "9px"}}/>
               Profile
@@ -79,12 +72,10 @@ const Menu = () => {
                 <i className="fas fa-sign-out-alt mr-2 pt-1"/>
                 Logout
               </Link>
-        
           </div>
         </li>
       </ul>
     </div>
-      
   )
 }
 

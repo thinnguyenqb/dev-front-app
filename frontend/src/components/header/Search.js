@@ -4,6 +4,8 @@ import { getDataAPI } from '../../utils/fetchData'
 import {GLOBALTYPES} from '../../redux/actions/globalTypes'
 import UserCard from '../UserCard'
 import LoadIcon from '../../images/loading1.gif'
+import { RiSearchLine, RiCloseLine } from "react-icons/ri";
+
 
 const Search = () => {
   const [search, setSearch] = useState('')
@@ -53,14 +55,16 @@ const Search = () => {
       <input type="text" name="search" value={search} id="search" className="bg-light"
       onChange={e => setSearch(e.target.value.toLowerCase().replace(/ /g, ''))}/>
       
-      <div className="search_icon" style={{opacity: search ? 0 : 0.5}}>
-        <span className="material-icons">search</span>
-        <span>Tìm kiếm</span>
+      <div className="search_text" style={{opacity: search ? 0 : 0.5}}>
+        <span>Search...</span>
+        <div className="search_icon">
+          <RiSearchLine size="1.5rem"/>
+        </div>
       </div>
 
       <div className="close_search" style={{opacity: users.length === 0 ? 0 : 1}}
       onClick={handleClose}>
-        &times;
+        <RiCloseLine />
       </div> 
 
       <button type="submit" style={{display: 'none'}}>Search</button>
