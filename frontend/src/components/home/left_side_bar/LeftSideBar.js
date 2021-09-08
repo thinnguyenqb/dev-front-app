@@ -8,9 +8,8 @@ import LoadIcon from "../../../images/loading1.gif"
 import { getSuggestions } from '../../../redux/actions/suggestionsAction';
 
 import {
-  FcHome, FcReadingEbook, FcSmartphoneTablet,
-  FcGraduationCap, FcVoicePresentation
-} from "react-icons/fc";
+  RiHomeSmileLine, RiBookReadFill, RiCodeBoxFill, RiSlideshow3Line, RiWechatFill
+} from "react-icons/ri";
 
 const LeftSideBar = () => {
   const { auth, suggestions } = useSelector(state => state)
@@ -21,23 +20,23 @@ const LeftSideBar = () => {
         <h5 className="text-black">DEV Community</h5>
         <ul>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <FcHome className="menu-bars-icon mr-4 ml-3"/> 
+            <RiHomeSmileLine className="menu-bars-icon mr-4 ml-3"/> 
             <a href="/">Home</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <FcReadingEbook className="menu-bars-icon mr-4 ml-3"/> 
+            <RiBookReadFill className="menu-bars-icon mr-4 ml-3"/> 
             <a href="/">Danh sách đọc</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <FcSmartphoneTablet className="menu-bars-icon mr-4 ml-3"/> 
+            <RiCodeBoxFill className="menu-bars-icon mr-4 ml-3"/> 
             <a href="/">Lập trình Frontend</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <FcGraduationCap className="menu-bars-icon mr-4 ml-3"/> 
+            <RiSlideshow3Line className="menu-bars-icon mr-4 ml-3"/> 
             <a href="/">Khóa học</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <FcVoicePresentation className="menu-bars-icon mr-4 ml-3"/> 
+            <RiWechatFill className="menu-bars-icon mr-4 ml-3"/> 
             <a href="/">Đàm đạo, tản mạn</a>
           </li>
         </ul>
