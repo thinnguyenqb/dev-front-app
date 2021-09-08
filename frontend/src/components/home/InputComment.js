@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createComment } from '../../redux/actions/commentAction'
+import Icons from '../Icons'
 
 const InputComment = ({ children, post, onReply, setOnReply }) => {
   const [content, setContent] = useState('')
 
-  const { auth, socket } = useSelector(state => state)
+  const { auth, socket, theme } = useSelector(state => state)
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
@@ -37,6 +38,8 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
       <input type="text" placeholder="Add your comments ..."
         value={content} onChange={e => setContent(e.target.value)} />
       
+      <Icons setContent={setContent} content={content} theme={theme}/>
+
       <button type="submit" className="postBtn">
         Post
       </button>
