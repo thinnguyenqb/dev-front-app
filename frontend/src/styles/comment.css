@@ -29,6 +29,10 @@
   margin-right: 10px;
 }
 
+.comment_input .postBtn:hover{
+  color: blueviolet;
+}
+
 /* ========== COMMENTS ========== */
 .comment_display{
   padding: 4px 25px;
