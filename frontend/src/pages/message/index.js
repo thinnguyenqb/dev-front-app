@@ -13,7 +13,7 @@ const Message = () => {
       <div className="col-md-8 px-0">
         <div className="d-flex justify-content-center 
           align-items-center flex-column h-100">
-            <RiMessengerLine size="5rem" color="blueviolet"/>
+            <RiMessengerLine size="5rem" color="#4F46E5"/>
             <h4>Messenger</h4>
         </div>
       </div>

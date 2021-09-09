@@ -23,7 +23,7 @@ const LikeButton = ({ isLike, handleLike, handleUnLike, typeLike }) => {
             isLike ? (
               <i
                 className="fas fa-thumbs-up"
-                style={{ color: "blueviolet", filter: theme ? 'invert(1)' : 'invert(0)'}}
+                style={{ color: "#4F46E5", filter: theme ? 'invert(1)' : 'invert(0)'}}
                 onClick={handleUnLike}
               />
             ) : (
