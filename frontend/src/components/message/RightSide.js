@@ -9,9 +9,11 @@ import MsgDisplay from './MsgDisplay';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
 import { imageShow, videoShow } from '../../utils/mediaShow';
 import { imageUpload } from '../../utils/imageUpload';
+import { addMessage } from '../../redux/actions/messageAction';
+import LoadIcon from '../../images/loading1.gif'
 
 const RightSide = () => {
-  const { auth, message, theme } = useSelector(state => state)
+  const { auth, message, theme, socket } = useSelector(state => state)
   const dispatch = useDispatch()
 
   const { id } = useParams()
@@ -54,7 +56,24 @@ const RightSide = () => {
   }
   
   const handleSubmit = async (e) => {
-   
+    e.preventDefault()
+    if (!text.trim() && media.length === 0) return;
+    setText('')
+    setMedia([])
+    setLoadMedia(true)
+
+    let newArr = [];
+    if (media.length > 0) newArr = await imageUpload(media)
+    
+    const msg = {
+      sender: auth.user._id,
+      recipient: id,
+      text,
+      media: newArr,
+      createdAt: new Date().toISOString()
+    }
+    setLoadMedia(false)
+    dispatch(addMessage({msg, auth, socket}))
   }
 
   return (
@@ -73,13 +92,32 @@ const RightSide = () => {
 
       <div className="chat_container"
         style={{ height: media.length > 0 ? 'calc(100% - 280px)' : ''}}>
+        
         <div className="chat_display">
-          <div className="chat_row other_message">
-            <MsgDisplay user={user}/>
-          </div>
-          <div className="chat_row you_message">
-            <MsgDisplay user={auth.user}/>
-          </div>
+          {
+            message.data.map((msg, index) => (
+              <div key={index}>
+                {
+                  msg.sender !== auth.user._id &&
+                  <div className="chat_row other_message">
+                    <MsgDisplay user={user} msg={msg} theme={theme}/>
+                  </div>
+                }
+                {
+                  msg.sender === auth.user._id &&
+                  <div className="chat_row you_message">
+                    <MsgDisplay user={auth.user} msg={msg} theme={theme}/>
+                  </div>
+                }
+              </div>
+            ))
+          }
+          {
+            loadMedia &&
+            <div className="chat_row you_message">
+              <img src={LoadIcon} alt="loading" style={{width: '80px'}}/>
+            </div>
+          }
         </div>
       </div>
 
@@ -112,7 +150,13 @@ const RightSide = () => {
         <Icons setContent={setText} content={text} theme={theme}/>
 
         <input type="text" placeholder="Enter your message..."
-          value={text} onChange={e => setText(e.target.value)} />
+          value={text} onChange={e => setText(e.target.value)}
+          style={{
+            filter: theme ? 'invert(1)' : 'invert(0)',
+            backgroundColor: theme ? '#040404' : '',
+            color: theme ? 'white' : ''
+          }}
+        />
         
         <button type="submit" className="button mt-2">
           <IoSend color="#4F46E5"/>

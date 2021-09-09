@@ -1,6 +1,6 @@
 import React from 'react'
 import Avatar from './Avatar'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const UserCard = ({children, user, border, handleClose, setShowFollowers, setShowFollowing}) => {
   const handleCloseAll = () => {
@@ -14,8 +14,23 @@ const UserCard = ({children, user, border, handleClose, setShowFollowers, setSho
         <Link to={`/profile/${user._id}`} onClick={handleCloseAll} className="d-flex align-item-center">
           <Avatar src={user.avatar} size="big-avatar"/>
           <div className="ml-1" style={{transform: 'translateY(-1px) translateX(6px)'}}>
-            <span className="d-block pt-1" style={{fontWeight: '500', color: "#200353"}}>{user.username}</span>
-            <small style={{opacity: 0.7, fontWeight: '500', color: "#200353"}}>{user.fullname}</small>
+            <span className="d-block pt-1" style={{ fontWeight: '500', color: "#200353" }}>{user.username}</span>
+            <small style={{ opacity: 0.7, fontWeight: '500', color: "#200353" }}>
+              {
+                user.text || user.media
+                  ?
+                  <>
+                    <div>{user.text}</div>
+                    {
+                      user.media.length > 0 &&
+                      <div>
+                        {user.media.length} <i className="fas fa-image" />
+                      </div>
+                    }
+                  </>
+                  : user.fullname
+              }
+            </small>
           </div>
         </Link>
       </div>

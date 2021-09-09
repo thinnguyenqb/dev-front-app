@@ -4,6 +4,7 @@ const initialState = {
   users: [],
   resultUser: 0,
   data: [],
+  resultData: 0,
   firstLoad: false
 }
 
@@ -17,6 +18,21 @@ const messageReducer = (state = initialState, action) => {
         };
       }
     return state;
+
+    case MESS_TYPES.ADD_MESSAGE:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
+        users: state.users.map(user => 
+          user._id === action.payload.recipient || user._id === action.payload.sender
+          ? {
+              ...user, 
+              text: action.payload.text, 
+              media: action.payload.media,
+          }
+          : user
+        ),
+      };
     
     default:
       return state;

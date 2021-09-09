@@ -8,10 +8,6 @@
   box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
-.message{
-  height: calc(100vh - 100px);
-}
-
 .message_header-left{
   display: flex;
   justify-content: space-between;
@@ -59,7 +55,7 @@
 .message_chat_list{
   margin-left: 30px;
   width: 85%;
-  height: calc(100% - 60px);
+  height: calc(100% - 120px);
   overflow-y: hidden;
 }
 
