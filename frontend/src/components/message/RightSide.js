@@ -100,10 +100,10 @@ const RightSide = () => {
         }
       </div>
 
-      <div className="chat_container"
+      <div className="chat_container" id="scroller"
         style={{ height: media.length > 0 ? 'calc(100% - 250px)' : ''}}>
         
-        <div className="chat_display">
+        <div className="chat_display" >
           {
             message.data.map((msg, index) => (
               <div key={index}>
@@ -115,20 +115,23 @@ const RightSide = () => {
                 }
                 {
                   msg.sender === auth.user._id &&
-                  <div className="chat_row you_message" >
-                    <MsgDisplay user={auth.user} msg={msg} theme={theme}/>
+                  <div className="chat_row you_message">
+                    <MsgDisplay user={auth.user} msg={msg} theme={theme} />
                   </div>
                 }
               </div>
             ))
           }
+          
           {
             loadMedia &&
             <div className="chat_row you_message">
               <img src={LoadIcon} alt="loading" style={{width: '80px'}}/>
             </div>
           }
+          
         </div>
+        <div id="anchor"></div>
       </div>
 
       <div className="show_media" style={{display: media.length > 0 ? 'grid' : 'none'}}>

@@ -207,6 +207,9 @@
     justify-content: space-around;
     align-items: center;
   }
+  .nav-item-tooltiptext{
+    display: none;
+  }
 
   .header .menu .dropdown-menu{
     bottom: 100%;

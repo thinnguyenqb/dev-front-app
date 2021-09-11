@@ -4,6 +4,7 @@ import { POST_TYPES } from './redux/actions/postAction';
 import { GLOBALTYPES } from './redux/actions/globalTypes';
 import { NOTIFY_TYPES } from './redux/actions/notifyAction';
 import audioMes from './audio/message-sound.mp3'
+import { MESS_TYPES } from './redux/actions/messageAction';
 
 // const spawnNotification = (body, icon, url, title) => {
 //   let options = {
@@ -103,6 +104,13 @@ const SocketClient = () => {
     })
     return () => socket.off('deleteNotifyToClient')
   }, [socket, dispatch, auth])
+
+  useEffect(() => {
+    socket.on('addMessageToClient', msg => {
+      dispatch({ type: MESS_TYPES.ADD_MESSAGE, payload: msg})
+    })
+    return () => socket.off('addMessageToClient')
+  }, [socket, dispatch])
   
 
   return (

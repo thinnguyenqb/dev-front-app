@@ -195,10 +195,18 @@
 }
 
 /* ------------ CHAT CONTAINER ------------ */
+#scroller * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 2px;
+}
+
 .chat_container{
   width: 100%;
   height: calc(100% - 160px);
-  overflow-y: auto;
   overflow-x: hidden;
   padding: 0 10px;
 }
@@ -206,7 +214,6 @@
 .chat_display{
   display: block;
   margin: 0 auto;
-
   width: 90%;
   min-height: 100%;
   display:flex;
