@@ -93,7 +93,7 @@ const RightSide = () => {
           user.length !== 0 &&
           <>
             <UserCard user={user} />
-            <span className="message_delete">
+            <span className="message_delete mr-3">
               <FiTrash2/>
             </span>
           </>
@@ -101,7 +101,7 @@ const RightSide = () => {
       </div>
 
       <div className="chat_container"
-        style={{ height: media.length > 0 ? 'calc(100% - 280px)' : ''}}>
+        style={{ height: media.length > 0 ? 'calc(100% - 250px)' : ''}}>
         
         <div className="chat_display">
           {
@@ -115,7 +115,7 @@ const RightSide = () => {
                 }
                 {
                   msg.sender === auth.user._id &&
-                  <div className="chat_row you_message">
+                  <div className="chat_row you_message" >
                     <MsgDisplay user={auth.user} msg={msg} theme={theme}/>
                   </div>
                 }

@@ -19,15 +19,18 @@ const UserCard = ({children, user, border, handleClose, setShowFollowers, setSho
               {
                 user.text || user.media
                   ?
-                  <>
-                    <div>{user.text}</div>
+                  <div className="d-flex">
+                    {
+                      user.text && 
+                      <div className="mr-2">{user.text.slice(0, 20) + '...'}</div>
+                    }
                     {
                       user.media.length > 0 &&
                       <div>
-                        {user.media.length} <i className="fas fa-image" />
+                        {user.media.length} <i className="fas fa-photo-video" />
                       </div>
                     }
-                  </>
+                  </div>
                   : user.fullname
               }
             </small>

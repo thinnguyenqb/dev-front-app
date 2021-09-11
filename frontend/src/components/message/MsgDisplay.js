@@ -5,12 +5,12 @@ import { imageShow, videoShow } from '../../utils/mediaShow'
 const MsgDisplay = ({ user, msg, theme }) => {
   return (
     <>
-      <div className="chat_title">
+      <div className="chat_title_tooltip">
         <Avatar src={user.avatar} size="medium-avatar" />
-        <span>{user.username}</span>
+        <span className="chat_title_tooltiptext">{user.username}</span>
       </div>
 
-      <div>
+      <div className="chat_content">
         {
           msg.text && 
           <div className="chat_text"
@@ -29,11 +29,11 @@ const MsgDisplay = ({ user, msg, theme }) => {
             </div>
           ))  
         }
+        <div className="chat_time">
+          {new Date(msg.createdAt).toLocaleString()}
+        </div>
       </div>
       
-      <div className="chat_time">
-        {new Date(msg.createdAt).toLocaleString()}
-      </div>
     </>
   )
 }

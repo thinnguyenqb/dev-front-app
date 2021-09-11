@@ -48,6 +48,53 @@
   cursor: pointer;
 }
 
+
+.nav-item{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.nav-item-tooltiptext{
+  pointer-events: none;
+  background-color: #26232b;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  padding: 8px 10px;
+  top: 20px;
+  margin-top: 5px;
+
+  position: absolute;
+  z-index: 1;
+
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.68, 0.55, 0.265, 1.55)
+}
+
+.nav-item:hover .nav-item-tooltiptext {
+  top: 45px;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.nav-item-tooltiptext::before{
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  background: #26232b;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+
 .header .menu .notify_length{
   position: absolute;
   top: 45%;

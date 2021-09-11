@@ -17,18 +17,21 @@ const Menu = () => {
       <ul className="navbar-nav flex-row mr-auto">
         <li className="nav-item mr-2">
           <Link className="nav-link" to="/home">
-            <RiHome5Line size="2rem"/>
+            <RiHome5Line size="2rem" />
           </Link>
+          <span className="nav-item-tooltiptext">Home</span>
         </li>
         <li className="nav-item mr-2">
           <Link className="nav-link" to="/discover">
             <RiCompassDiscoverLine size="2rem"/>
           </Link>
+          <span className="nav-item-tooltiptext">Discover</span>
         </li>
         <li className="nav-item mr-2">
           <Link className="nav-link" to="/message">
             <RiChatSmile2Line size="2rem"/>
           </Link>
+          <span className="nav-item-tooltiptext">Message</span>
         </li>
         <li className="nav-item dropdown mr-2">
           <span className="nav-link" id="navbarDropdown"
