@@ -26,22 +26,30 @@ const Discover = () => {
   }
 
   return (
-    <div>
-      {
-        discover.loading
-          ? <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
-          : <PostThumb posts={discover.posts} result={discover.result} />
-      }
-      {
-        load && <img src={LoadIcon} alt="loading" className="d-block mx-auto"/>
-      }
-      {
-        !discover.loading && 
-        <LoadMoreBtn
-          result={discover.result} page={discover.page}
-          load={load} handleLoadMore={handleLoadMore}
-        />
-      }
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      marginTop: "50px"
+    }}>
+      <div className="col-md-10" >
+        {
+          discover.loading
+            ? <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
+            : <PostThumb posts={discover.posts} result={discover.result} />
+        }
+        {
+          load && <img src={LoadIcon} alt="loading" className="d-block mx-auto"/>
+        }
+        {
+          !discover.loading && 
+          <LoadMoreBtn
+            result={discover.result} page={discover.page}
+            load={load} handleLoadMore={handleLoadMore}
+          />
+        }
+      </div>
     </div>
   )
 }

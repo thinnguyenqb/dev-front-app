@@ -22,7 +22,14 @@ const Post = () => {
   }, [detailPost, id, auth, dispatch])
 
   return (
-    <div className="posts">
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      marginTop: "10px"
+    }}>
+      <div className="posts col-md-7">
       {
         post.length === 0 &&
         <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
@@ -33,6 +40,9 @@ const Post = () => {
         ))
       }
     </div>
+
+    </div>
+    
   )
 }
 
