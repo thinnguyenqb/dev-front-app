@@ -239,8 +239,8 @@
 
 .chat_text{
   padding: 3px 14px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /* ========CHAT-RIGHT======== */
@@ -254,13 +254,12 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  width: 120px;
-  padding: 3px 0;
+  padding: 3px 8px;
   font-size: 14px;
 
-  top: 1px;
-  right: 100%;
-  margin-right: 10px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -30px;
 
   position: absolute;
   z-index: 1;
@@ -271,7 +270,7 @@
 
 .you_message .chat_title_tooltip:hover .chat_title_tooltiptext {
   visibility: visible;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .you_message .chat_content{
@@ -288,7 +287,7 @@
   font-size: 12px;
 
   width: 145px;
-  top: 5px;
+  top: 1px;
   right: 100%;
   margin-right: 10px;
 
@@ -315,13 +314,12 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  width: 120px;
-  padding: 3px 0;
+  padding: 3px 8px;
   font-size: 14px;
 
-  top: 2px;
-  left: 100%;
-  margin-left: 10px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -30px;
 
   position: absolute;
   z-index: 1;
@@ -332,7 +330,7 @@
 
 .other_message .chat_title_tooltip:hover .chat_title_tooltiptext {
   visibility: visible;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .other_message .chat_content{
@@ -349,7 +347,7 @@
   font-size: 12px;
 
   width: 145px;
-  top: 5px;
+  top: 1px;
   left: 100%;
   margin-left: 10px;
   

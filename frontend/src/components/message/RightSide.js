@@ -110,13 +110,13 @@ const RightSide = () => {
                 {
                   msg.sender !== auth.user._id &&
                   <div className="chat_row other_message">
-                    <MsgDisplay user={user} msg={msg} theme={theme}/>
+                    <MsgDisplay user={user} msg={msg} theme={theme} styleCSS={true}/>
                   </div>
                 }
                 {
                   msg.sender === auth.user._id &&
                   <div className="chat_row you_message">
-                    <MsgDisplay user={auth.user} msg={msg} theme={theme} />
+                    <MsgDisplay user={auth.user} msg={msg} theme={theme} styleCSS={false}/>
                   </div>
                 }
               </div>

@@ -6,7 +6,7 @@ class APIfeatures {
     this.query = query;
     this.queryString = queryString;
   }
-
+  //Khong xu ly phan trang cho message
   paginating() {
     const page = this.queryString.page * 1 || 1;
     const limit = this.queryString.limit * 1 || 9;
@@ -54,7 +54,7 @@ const messageCtrl = {
     try {
       const features = new APIfeatures(Conversations.find({
         recipients: req.user._id,
-      }),req.query).paginating();
+      }),req.query)
 
       const conversations = await features.query
         .sort("-updatedAt")
@@ -76,7 +76,7 @@ const messageCtrl = {
           {sender: req.user._id, recipient: req.params.id},
           {sender: req.params.id, recipient: req.user._id}
         ]
-    }), req.query).paginating()
+    }), req.query)
 
     const messages = await features.query.sort('-createdAt')
 
