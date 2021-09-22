@@ -81,12 +81,13 @@ const CardFooter = ({ post }) => {
         </div>
         {
           saved
-            ? <i className="fas fa-bookmark bookmark" style={{ padding: '10px 12px' }}
+            ? <i className="save" style={{ padding: '8px 8px', fontSize: '12px', fontWeight: '500' }}
               onClick={handleUnSavePost}
-            />
-            : <i className="far fa-bookmark bookmark" style={{ padding: '10px 12px' }}
+            >Unsave</i>
+            : <i className="save" style={{ padding: '8px 8px', fontSize: '12px',  fontWeight: '500' }}
               onClick={handleSavePost}
-            />
+            >Save
+            </i>
         }
         
       </div>

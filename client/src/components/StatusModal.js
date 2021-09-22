@@ -121,7 +121,7 @@ const StatusModal = () => {
         </div>
         <div className="status_body">
           <textarea className="content" value={content}
-            placeholder={`${auth.user.username}, what are you thinking?`}
+            placeholder={`${auth.user.username}, What do you want to share?`}
             onChange={(e) => setContent(e.target.value)} />
           <div className="d-flex">
             <div className="flex-fill"></div>

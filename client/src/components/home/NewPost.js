@@ -3,7 +3,7 @@ import Avatar from '../Avatar'
 import { useSelector, useDispatch } from 'react-redux'
 import { GLOBALTYPES } from '../../redux/actions/globalTypes'
 
-const Status = () => {
+const NewPost = () => {
   const { auth } = useSelector(state => state)
   const dispatch = useDispatch()
   return (
@@ -11,10 +11,10 @@ const Status = () => {
       <Avatar src={auth.user.avatar} size="big-avatar" />
       <button className="statusBtn"
       onClick={() => dispatch({type: GLOBALTYPES.STATUS, payload: true})}>
-        {auth.user.username}, what are you thinking?
+        {auth.user.username}, What do you want to share?
       </button>
     </div>
   )
 }
 
-export default Status
+export default NewPost

@@ -35,7 +35,6 @@
   align-items:center;
   cursor: pointer;
   padding: 15px 25px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 .posts .card_header .card_name{ 
   transform: translateY(4px);
@@ -119,11 +118,24 @@
 }
 
 .card_icon_menu i{
-  font-size: 20px;
+  font-size: 18px;
   margin: 8px;
-  padding: 10px 10px;
-  border-radius: 50%;
+  padding: 8px 8px;
+  border-radius: 10px;
   background-color: #ddd;
+}
+
+.card_icon_menu .fa-heart:hover{
+  color: #ff2424;
+  background-color: #ffc6c6;
+}
+.card_icon_menu .fa-comment:hover{
+  color: #4c24ff;
+  background-color: #d7cfff;
+}
+.card_icon_menu .fa-paper-plane:hover{
+  color: #1755ff;
+  background-color: #c1d1ff;
 }
 
 .card_icon_menu .bookmark{
@@ -160,16 +172,109 @@
 }
 
 .sidebar-items ul li{
-  padding: 8px 0px;
+  margin-top: 10px;
+  padding: 6px 0px;
 }
 
 .sidebar-items ul li a{
   color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration:none;
 }
 
 .menu-bars-icon{
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
+.filter_post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter_post_left {
+  display: flex;
+}
+.filter_post_right {
+  display: flex;
+}
+
+.filter_post_item{
+  padding: 5px 10px;
+}
+
+.filter_post_item:hover{
+  background-color: #e4d2fd;
+  padding: 5px 10px;
+  color: #440d92;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.card_content{
+  background-color: #ffffff;
+  opacity: 1;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card_content ul{
+  margin-bottom: 0px;
+}
+
+.card_content .card_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.card_content .card_header h5{
+  font-weight: 700;
+}
+
+.card_content .card_header span{
+  color:#4F46E5;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.card_item{
+  display:flex;
+  justify-content:space-between;
+  flex-direction:column;
+  padding: 15px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  
+}
+
+.card_item:hover{
+  background-color: rgb(232, 227, 255);
+}
+.card_item a{
+  color: black;
+  text-decoration: none;
+}
+.card_item a:hover{
+  color: #4F46E5;
+}
+
+.card_item span{
+  color: #7e7e7e;
+}
+
+.card_content .card_footer{
+  text-align: center;
+  height: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card_conten .card_item .label{
+  background-color: #4F46E5;
+  color: white;
+  padding: 2px 5px;
+  width: 40px;
+  border-radius: 5px;
+}
+

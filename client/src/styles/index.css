@@ -2,14 +2,14 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Roboto",
     monospace;
 }
 
@@ -115,6 +115,9 @@ img {
 
 /* -------- ICONS ---------- */
 @import url("./icons.css");
+
+/* -------- CONTENTS ---------- */
+@import url("./content.css");
 
 
 

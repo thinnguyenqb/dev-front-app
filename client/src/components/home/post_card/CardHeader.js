@@ -54,10 +54,12 @@ const CardHeader = ({ post }) => {
             auth.user._id === post.user._id &&
             <>
               <div className="dropdown-item" onClick={handleEditPost}>
-                <span className="material-icons-outlined">edit</span>Edit Post
+                <span className="material-icons-outlined">edit</span>
+                Edit Post
               </div>
               <div className="dropdown-item" onClick={handleDeletePost}>
-                <span className="material-icons-outlined">delete_outline</span>Delete Post
+                <span className="material-icons-outlined">delete_outline</span>
+                Delete Post
               </div>
             </>
           }

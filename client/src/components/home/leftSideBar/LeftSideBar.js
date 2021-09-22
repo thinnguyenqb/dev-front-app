@@ -8,8 +8,10 @@ import LoadIcon from "../../../images/loading1.gif"
 import { getSuggestions } from '../../../redux/actions/suggestionsAction';
 
 import {
-  RiHomeSmileLine, RiBookReadFill, RiCodeBoxFill, RiSlideshow3Line, RiWechatFill
+  RiBookReadFill, RiSlideshow3Line, RiWechatFill, RiHandCoinLine, RiTerminalBoxFill
 } from "react-icons/ri";
+import { FiShoppingBag } from "react-icons/fi";
+import { HiOutlineEmojiHappy } from "react-icons/hi";
 
 const LeftSideBar = () => {
   const { auth, suggestions } = useSelector(state => state)
@@ -20,24 +22,20 @@ const LeftSideBar = () => {
         <h5 className="text-black">DEV Community</h5>
         <ul>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <RiHomeSmileLine className="menu-bars-icon mr-4 ml-3"/> 
-            <a href="/">Home</a>
+            <RiBookReadFill className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/feature">Danh sách đọc</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <RiBookReadFill className="menu-bars-icon mr-4 ml-3"/> 
-            <a href="/">Danh sách đọc</a>
+            <RiSlideshow3Line className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/feature">Khóa học</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <RiCodeBoxFill className="menu-bars-icon mr-4 ml-3"/> 
-            <a href="/">Lập trình Frontend</a>
+            <FiShoppingBag className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="https://shop-dev-front.herokuapp.com/">DEV Shop</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <RiSlideshow3Line className="menu-bars-icon mr-4 ml-3"/> 
-            <a href="/">Khóa học</a>
-          </li>
-          <li className="d-flex justify-content-flex-start align-items-center">
-            <RiWechatFill className="menu-bars-icon mr-4 ml-3"/> 
-            <a href="/">Đàm đạo, tản mạn</a>
+            <RiWechatFill className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </div>
@@ -46,17 +44,18 @@ const LeftSideBar = () => {
         <h5 className="text-black">Other</h5>
         <ul>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <a href="/" className="pl-3">Danh cho người mới</a>
+            <RiHandCoinLine className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/content">Code of Conduct</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <a href="/" className="pl-3">Điều khoản sử dụng</a>
+            <HiOutlineEmojiHappy className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/content">Privacy Policy</a>
           </li>
           <li className="d-flex justify-content-flex-start align-items-center">
-            <a href="/" className="pl-3">Chính sách bảo mật</a>
+            <RiTerminalBoxFill className="menu-bars-icon mr-2 ml-2"/> 
+            <a href="/content">Terms of use</a>
           </li>
-          <li className="d-flex justify-content-flex-start align-items-center">
-            <a href="/" className="pl-3">Liên hệ</a>
-          </li>
+          
         </ul>
       </div>
 
