@@ -5,6 +5,7 @@
 Dev Front: A constructive and inclusive social network for software developers. With you every step of your journey.
 
 **2. Technical**
+
 ReactJS, React Hooks, Redux, Socket.io, MongoDB
 
 **3. Features**
@@ -25,5 +26,7 @@ ReactJS, React Hooks, Redux, Socket.io, MongoDB
 
 **4. Demo**
 Test demo =>Email: thinnguyen625@gmail - Pass: 123123
+
 https://dev-front-app-v1-91ad75ba7e53.herokuapp.com/
+
 https://shop-dev-front.herokuapp.com/
